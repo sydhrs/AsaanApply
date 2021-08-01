@@ -1,6 +1,6 @@
 AsaanApply - Web Development Project
 
-Essential Tools: ASP.NETtr
+Tools: ASP.NET, MVC
 
 The app has a homepage where information of the university is available and different tabs which user can click to perform different actions.
 The user can sign sign up for registration.
