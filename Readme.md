@@ -1,4 +1,6 @@
-This is a Web Development Project developed in Asp.NET Framework using MVC. 
+AsaanApply - Web Development Project
+
+Essential Tools: ASP.NETtr
 
 The app has a homepage where information of the university is available and different tabs which user can click to perform different actions.
 The user can sign sign up for registration.
