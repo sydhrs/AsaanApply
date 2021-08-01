@@ -1,0 +1,496 @@
+﻿@using WebProject_NetFramework.Models
+@{
+    ViewBag.Title = "AdminProfile";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title ">Student Profile</h3>
+            </div>
+        </div>
+    </div>
+    <!-- END: Subheader -->
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4" style="height: 450px; width: 220px">
+                <div class="m-portlet m-portlet--full-height  ">
+                    <div class="m-portlet__body">
+                        <div class="m-card-profile">
+                            <div class="m-card-profile__title m--hide">
+                                Your Profile
+                            </div>
+                            @{
+                                var finalProfilePic = "data:image;base64," + Convert.ToBase64String(Session.GetSession().ApplicationUser.ProfilePic);
+                            }
+                            <div class="m-card-profile__pic">
+                                <div class="m-card-profile__pic-wrapper">
+                                    <img src="@finalProfilePic" alt="">
+
+                                </div>
+                            </div>
+                            <div class="m-card-profile__details">
+                                <span class="m-card-profile__name"><h6> @Session.GetSession().ApplicationUser.FirstName  @Session.GetSession().ApplicationUser.MiddleName @Session.GetSession().ApplicationUser.LastName</h6> </span>
+                                <span><a href="" class="m-card-profile__email m-link"><h6> @Session.GetSession().ApplicationUser.Email </h6></a></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 ">
+                <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-tools">
+                            <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
+                                        <i class="flaticon-share m--hide"></i>
+                                        Update Profile
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
+                                        FAQ
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_3" role="tab">
+                                        WAYS TO GET HELP
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="m-portlet__head-tools">
+                            <ul class="m-portlet__nav">
+                                <li class="m-portlet__nav-item m-portlet__nav-item--last">
+                                    <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="hover" aria-expanded="true">
+                                        <a href="#" class="m-portlet__nav-link btn btn-lg btn-secondary  m-btn m-btn--icon m-btn--icon-only m-btn--pill  m-dropdown__toggle">
+                                            <i class="la la-gear"></i>
+                                        </a>
+                                        <div class="m-dropdown__wrapper">
+                                            <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                            <div class="m-dropdown__inner">
+                                                <div class="m-dropdown__body">
+                                                    <div class="m-dropdown__content">
+                                                        <ul class="m-nav">
+                                                            <li class="m-nav__section m-nav__section--first">
+                                                                <span class="m-nav__section-text">Quick Actions</span>
+                                                            </li>
+                                                            <li class="m-nav__item">
+                                                                <a href="/Student/Dashboard" class="m-nav__link">
+                                                                    <i class="m-nav__link-icon flaticon-chat-1"></i>
+                                                                    <span class="m-nav__link-text">DashBoard</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="m-nav__section">
+                                                                <span class="m-nav__section-text">Useful Links</span>
+                                                            </li>
+                                                            <li class="m-nav__item">
+                                                                <a href="/Student/Message" class="m-nav__link">
+                                                                    <i class="m-nav__link-icon flaticon-chat-1"></i>
+                                                                    <span class="m-nav__link-text">Send Messages</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="m-nav__separator m-nav__separator--fit m--hide">
+                                                            </li>
+                                                            <li class="m-nav__item m--hide">
+                                                                <a href="#" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">Submit</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="m_user_profile_tab_1">
+                            <form class="m-form m-form--fit m-form--label-align-right" id="m-form">
+                                <div class="m-portlet__body">
+                                    <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                        <div class="alert m-alert m-alert--default" role="alert">
+                                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-10 ml-auto">
+                                            <h3 class="m-form__section">1. Update Account</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">User Name</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" value="@Session.GetSession().ApplicationUser.Username" s name="Username" tag="ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">First Name</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" value="@Session.GetSession().ApplicationUser.FirstName" name="FirstName" tag="Person ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Middle Name</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" value="@Session.GetSession().ApplicationUser.MiddleName" name="MiddleName" tag="Person ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" value="@Session.GetSession().ApplicationUser.LastName" name="LastName" tag="Person ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Email</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" value="@Session.GetSession().ApplicationUser.Email" name="Email" tag="ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">CNIC </label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="text" placeholder="CNIC No" name="CNIC" tag="Person">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label"> Gender Type</label>
+                                        <div class="col-7">
+                                            <select class="form-control m-input" type="password" id="genderType" placeholder="GenderType" name="GenderTypeId" tag="Person">
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">DOB</label>
+                                        <div class="col-7">
+                                            <input class="form-control" type="date" placeholder="DateOfBirth" name="DateOfBirth" tag="Person">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">User IMG</label>
+                                        <div class="col-7">
+                                            <div class="">
+                                                <input class="dropify"
+                                                       data-allowed-file-extensions="jpg png jpeg"
+                                                       data-allowed-formats="portrait square"
+                                                       data-show-remove="true"
+                                                       id="profilePic"
+                                                       name="ProfilePic"
+                                                       tag="Person"
+                                                       required
+                                                       type="file" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-10 ml-auto">
+                                            <h3 class="m-form__section">2. Update Password</h3>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">OLD Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder=" Password" name="txtOldPassword" id="txtOldPassword" tag="ApplicationUser" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">NEW Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder="NEW Password" name="txtPassword" id="txtPassword" tag="ApplicationUser" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder="Confirm Password" name="txtConfirmPassword" id="txtConfirmPassword" tag="ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-9" style="text-align: right;">
+                                            <button type="button" onclick="onChangePasswordClick()" id="changePass" class="btn btn-success m-btn m-btn--air m-btn--custom">Change Password</button>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+
+                                    <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                </div>
+                                <div class="m-portlet__foot m-portlet__foot--fit">
+                                    <div class="m-form__actions">
+                                        <div class="row">
+                                            <div class="col-2">
+                                            </div>
+                                            <div class="col-7">
+                                                <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save changes</button>&nbsp;&nbsp;
+                                                <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-pane " id="m_user_profile_tab_2">
+                            <div class="m-portlet m-portlet--full-height">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                Frequently Asked Questions
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+
+                                    <!--begin::Section-->
+                                    <div class="m-accordion m-accordion--default m-accordion--toggle-arrow" id="m_accordion_5" role="tablist">
+                                        <!--begin::Item-->
+                                        <div class="m-accordion__item m-accordion__item--brand">
+                                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_1_head" data-toggle="collapse" href="#m_accordion_5_item_1_body" aria-expanded="false">
+                                                <span class="m-accordion__item-icon"><i class="flaticon-exclamation"></i></span>
+                                                <span class="m-accordion__item-title"> Are usernames or passwords case-sensitive?</span>
+                                                <span class="m-accordion__item-mode"></span>
+                                            </div>
+                                            <div class="m-accordion__item-body collapse" id="m_accordion_5_item_1_body" role="tabpanel" aria-labelledby="m_accordion_5_item_1_head" data-parent="#m_accordion_5">
+                                                <div class="m-accordion__item-content">
+                                                    <p>
+                                                        Usernames are case sensitive. Passwords are case sensitive.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="m-accordion__item m-accordion__item--danger">
+                                            <div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_2_head" data-toggle="collapse" href="#m_accordion_5_item_2_body" aria-expanded="false">
+                                                <span class="m-accordion__item-icon"><i class="flaticon-refresh"></i></span>
+                                                <span class="m-accordion__item-title"> What should I do if I forget my password?</span>
+                                                <span class="m-accordion__item-mode"></span>
+                                            </div>
+                                            <div class="m-accordion__item-body collapse" id="m_accordion_5_item_2_body" role="tabpanel" aria-labelledby="m_accordion_5_item_2_head" data-parent="#m_accordion_5" style="">
+                                                <div class="m-accordion__item-content">
+                                                    <p>
+                                                        Enter your username in the Username entry box provided on the login screen.  Select the Forgot your password? link.  A dialog box will be displayed asking if you “Are sure you would like to reset your password”.  Select yes, your password will be emailed to you at the email address you provided when you were setup as a user.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="m-accordion__item m-accordion__item--info">
+                                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_3_head" data-toggle="collapse" href="#m_accordion_5_item_3_body" aria-expanded="false">
+                                                <span class="m-accordion__item-icon"><i class=" flaticon-info"></i></span>
+                                                <span class="m-accordion__item-title">  I did not find what I was looking for here, how do I contact Checkpoint Systems for Support?</span>
+                                                <span class="m-accordion__item-mode"></span>
+                                            </div>
+                                            <div class="m-accordion__item-body collapse" id="m_accordion_5_item_3_body" role="tabpanel" aria-labelledby="m_accordion_5_item_3_head" data-parent="#m_accordion_5" style="">
+                                                <div class="m-accordion__item-content">
+                                                    <p>
+                                                        Select the Contact Us link on the login page.  Contact the Checkpoint contact listing that is best suited to addressing your question or concern.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="m-accordion__item m-accordion__item--danger">
+                                            <div class="m-accordion__item-head collapsed" srole="tab" id="m_accordion_5_item_5_head" data-toggle="collapse" href="#m_accordion_5_item_5_body" aria-expanded="false">
+                                                <span class="m-accordion__item-icon"><i class=" flaticon-interface-2"></i></span>
+                                                <span class="m-accordion__item-title"> What password can I choose? For example, can I use my e-mail address?</span>
+                                                <span class="m-accordion__item-mode"></span>
+                                            </div>
+                                            <div class="m-accordion__item-body collapse" id="m_accordion_5_item_5_body" role="tabpanel" aria-labelledby="m_accordion_5_item_5_head" data-parent="#m_accordion_5" style="">
+                                                <div class="m-accordion__item-content">
+                                                    <p>
+                                                        Passwords must be 7-16 characters, with the allowed characters being A-Z, a-z, 0-9, and the symbols !,@@ #, $, %, and *. Neither commas nor periods are allowed, and spaces are also forbidden. Note that passwords are case sensitive. your password”.  Select yes, your password will be emailed to you at the email address you provided when you were setup as a user.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="m-accordion__item m-accordion__item--info">
+                                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_5_item_6_head" data-toggle="collapse" href="#m_accordion_5_item_6_body" aria-expanded="false">
+                                                <span class="m-accordion__item-icon"><i class=" flaticon-eye"></i></span>
+                                                <span class="m-accordion__item-title"> What username can I choose? For example, can I use my e-mail address?</span>
+                                                <span class="m-accordion__item-mode"></span>
+                                            </div>
+                                            <div class="m-accordion__item-body collapse" id="m_accordion_5_item_6_body" role="tabpanel" aria-labelledby="m_accordion_5_item_6_head" data-parent="#m_accordion_5" style="">
+                                                <div class="m-accordion__item-content">
+                                                    <p>
+                                                        The username needs to be alphanumeric (a-z, A-Z, 0-9), case-sensitive, and between 3 and 11 chracters in length. Symbols or unicode characters are not allowed. Thus, you cannot use your e-mail address, e.g. iman.astronomer@gmail.com.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Item-->
+
+                                    </div>
+
+                                    <!--end::Section-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane " id="m_user_profile_tab_3">
+                            <!--begin::Portlet-->
+                            <div class="m-portlet m-portlet--space">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                THREE WAYS TO GET HELP
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+                                    <div class="row">
+                                        <div class="col-xl-2">
+                                            <div class="m-tabs" data-tabs="true" data-tabs-contents="#m_sections">
+                                                <ul class="m-nav m-nav--active-bg m-nav--active-bg-padding-lg m-nav--font-lg m-nav--font-bold m--margin-bottom-20 m--margin-top-10 m--margin-right-40" id="m_nav" role="tablist">
+                                                    <li class="m-nav__item">
+                                                        <a class="m-nav__link m-tabs__item m-tabs__item--active" data-tab-target="#m_section_1" href="#">
+                                                            <span class="m-nav__link-text">1.</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="m-nav__item">
+                                                        <a class="m-nav__link m-tabs__item" data-tab-target="#m_section_2" href="#">
+                                                            <span class="m-nav__link-text">2.</span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="m-nav__item">
+                                                        <a class="m-nav__link  m-tabs__item" data-tab-target="#m_section_3" href="#">
+                                                            <span class="m-nav__link-text">3.</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-9">
+                                            <div class="m-tabs-content" id="m_sections">
+                                                <!--begin::Section 1-->
+                                                <div class="m-tabs-content__item m-tabs-content__item--active" id="m_section_1">
+                                                    <h4 class="m--font-bold m--margin-top-15 m--margin-bottom-20">GET HELP </h4>
+                                                    <div class="m-accordion m-accordion--bordered" id="m_section_3_content">
+                                                        <div class="" id="m_section_1_content">
+                                                            <div class="m-accordion__item">
+                                                                <div class="m-accordion__item-head " role="tab" id="m_section_1_content_1_head" data-toggle="collapse" href="#m_section_1_content_1_body">
+
+                                                                    <span class="m-accordion__item-icon"><i class="flaticon-envelope"></i></span>
+                                                                    <span class="m-accordion__item-title">E-Mail Your Question</span>
+
+                                                                </div>
+                                                                <div class="m-accordion__item-body collapse show" id="m_section_1_content_1_body" role="tabpanel" aria-labelledby="m_section_1_content_1_head" data-parent="#m_section_1_content">
+                                                                    <div class="m-accordion__item-content">
+                                                                        <p>
+                                                                            Email at <a href="#" class="m-link m--font-boldest">csadmissions@gcu.edu.pk</a> to ask your question.
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--end::Item-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--begin::Section 1-->
+                                                <!--begin::Section 2-->
+                                                <div class="m-tabs-content__item" id="m_section_2">
+                                                    <h4 class="m--font-bold m--margin-top-15 m--margin-bottom-20"> GET HELP</h4>
+                                                    <div class="m-accordion m-accordion--bordered" id="m_section_3_content">
+                                                        <div class="" id="m_section_2_content">
+                                                            <!--begin::Item-->
+                                                            <div class="m-accordion__item">
+                                                                <div class="m-accordion__item-head" role="tab" id="m_section_2_content_3_head" href="#m_section_2_content_3_body">
+                                                                    <span class="m-accordion__item-icon"><i class="flaticon-businesswoman"></i>Chat Online With A Staff</span>
+                                                                    @*<span class="m-accordion__item-title">Chat Online With A Staff</span>*@
+
+                                                                </div>
+                                                                <div class="m-accordion__item-body collapse show" id="m_section_2_content_3_body" role="tabpanel" aria-labelledby="m_section_2_content_3_head" data-parent="#m_section_2_content">
+                                                                    <div class="m-accordion__item-content">
+                                                                        <p>
+                                                                            Staff is available online Monday through Friday, <a href="#" class="m-link m--font-boldest">8:00 a.m to 4:00 p.m</a> (Central).
+                                                                            <section class="contact-infos">
+                                                                                <h4 class="title custom-font text-black">
+                                                                                    Meeting Hours
+                                                                                </h4>
+                                                                        <p>
+                                                                            Monday - Friday 8am to 4pm
+                                                                            <br>
+                                                                            Saturday - Closed
+                                                                            <br>
+                                                                            Sunday- Closed
+                                                                            <br>
+                                                                        </p>
+                                                                        </section>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--end::Item-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--begin::Section 2-->
+                                                <!--begin::Section 3-->
+                                                <div class="m-tabs-content__item" id="m_section_3">
+                                                    <h4 class="m--font-bold m--margin-top-15 m--margin-bottom-20">GET HELP</h4>
+                                                    <div class="m-accordion m-accordion--bordered" id="m_section_3_content">
+
+                                                        <!--begin::Item-->
+                                                        <div class="m-accordion__item">
+                                                            <div class="m-accordion__item-head" role="tab" id="m_section_3_content_1_head" href="#m_section_3_content_1_body">
+                                                                <span class="m-accordion__item-icon"><i class="la la-phone"></i> Contact:</span>
+
+                                                            </div>
+                                                            <div class="m-accordion__item-body collapse show" id="m_section_3_content_1_body" role="tabpanel" aria-labelledby="m_section_3_content_1_head" data-parent="#m_section_3_content">
+                                                                <div class="m-accordion__item-content">
+                                                                    <p>
+                                                                        <a href="#" class="m-link m--font-boldest">CONTACT US AT</a>
+                                                                        <br />Phone: +92 111-000-010  Ext:269
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Item-->
+                                                        <!--begin::Item-->
+                                                        <div class="m-accordion__item">
+                                                            <div class="m-accordion__item-head" role="tab" id="m_section_3_content_1_head" href="#m_section_3_content_1_body">
+                                                                <span class="m-accordion__item-icon"><i class="flaticon-placeholder-3"></i> Address:</span>
+
+                                                            </div>
+                                                            <div class="m-accordion__item-body collapse show" id="m_section_3_content_1_body" role="tabpanel" aria-labelledby="m_section_3_content_1_head" data-parent="#m_section_3_content">
+                                                                <div class="m-accordion__item-content">
+                                                                    <p>
+                                                                        Katchery Road, Lahore,Pakistan. <a href="#" class="m-link m--font-boldest">54000</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--end::Item-->
+                                                    </div>
+                                                </div>
+                                                <!--begin::Section 3-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end::Portlet-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

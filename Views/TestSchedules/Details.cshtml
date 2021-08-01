@@ -1,0 +1,115 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.TestSchedule
+
+@{
+    ViewBag.Title = "Test Schedules";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+<div class="m-portlet__head">
+    <div class="m-portlet__head-caption">
+        <div class="m-portlet__head-title">
+            <h3 class="m-portlet__head-text">
+                Detail
+            </h3>
+        </div>
+    </div>
+</div>
+<div class="m-portlet__body">
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EntranceTestVenue.VenueName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntranceTestVenue.VenueName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalSeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalSeat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservedSeat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReservedSeat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+    </dl>
+</div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "TestSchedules", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/TestSchedules/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>
+</div>

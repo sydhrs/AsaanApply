@@ -1,0 +1,231 @@
+﻿@using WebProject_NetFramework.Models
+
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <!-- BEGIN: Subheader -->
+  
+    <!-- END: Subheader -->
+    <div class="m-content">
+        <div class="row">
+        <div class="col-xl-3 col-lg-4" style="height: fit-content; width: fit-content;">
+                <div class="m-portlet m-portlet--full-height  ">
+                    <div class="m-portlet__body">
+                        <div class="m-card-profile">
+                            <div class="m-card-profile__title m--hide">
+                                Your Profile
+                            </div>
+                            @{
+                                string finalProfilePic;
+                                finalProfilePic = "data:image;base64," + Convert.ToBase64String(Session.GetSession().ApplicationUser.ProfilePic);
+                            }
+                            <div class="m-card-profile__pic">
+                                <div class="m-card-profile__pic-wrapper">
+                                    <img src="@finalProfilePic" alt="">
+                                </div>
+                            </div>
+                            <div class="m-card-profile__details">
+                                <span class="m-card-profile__details">Register ID: @Session.GetSession().ApplicationUser.Id</span>
+                                <span class="m-card-profile__name"> @Session.GetSession().ApplicationUser.Username</span>
+                                <a href="" class="m-card-profile__email m-link">@Session.GetSession().ApplicationUser.Email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-xl-9 col-lg-8 ">
+                <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-tools">
+                            <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
+                                        <i class="flaticon-share m--hide"></i>
+                                        Settings 
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="m_user_profile_tab_1">
+                            <form class="m-form m-form--fit m-form--label-align-right" id="m-form">
+                                <div class="m-portlet__body">
+                                    <div class="form-group m-form__group m--margin-top-10 m--hide">
+                                        <div class="alert m-alert m-alert--default" role="alert">
+                                            The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-10 ml-auto">
+                                            <h3 class="m-form__section"> Update Password</h3>
+                                        </div>
+                                    </div>
+                                    <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">OLD Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder=" Password" name="txtOldPassword" id="txtOldPassword" tag="ApplicationUser" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">NEW Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder="NEW Password" name="txtPassword" id="txtPassword" tag="ApplicationUser" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <label for="example-text-input" class="col-2 col-form-label">Confirm Password</label>
+                                        <div class="col-7">
+                                            <input class="form-control m-input" type="password" placeholder="Confirm Password" name="txtConfirmPassword" id="txtConfirmPassword" tag="ApplicationUser">
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-form__group row">
+                                        <div class="col-9" style="text-align: right;">
+                                            <button type="button" onclick="onChangePasswordClick()" id="changePass" class="btn btn-success m-btn m-btn--air m-btn--custom">Change Password</button>&nbsp;&nbsp;
+                                        </div>
+                                    </div>
+
+                                    <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
+                                </div>
+                                <div class="m-portlet__foot m-portlet__foot--fit">
+                                    <div class="m-form__actions">
+                                        <div class="row">
+                                            <div class="col-2">
+                                            </div>
+                                            <div class="col-7">
+                                                <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save changes</button>&nbsp;&nbsp;
+                                                <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function onChangePasswordClick() {
+
+
+            var btn = $("#changePass");
+            var form = $("#m-form");
+
+            var validator = form.validate({
+                rules: {
+                    txtOldPassword: {
+                        required: true
+                    },
+                    txtPassword: {
+                        required: true
+                    },
+                    txtConfirmPassword: {
+                        required: true
+                    },
+                }
+            });
+
+            let oldPassword = $("#txtOldPassword");
+            let newPassword = $("#txtPassword");
+            let confirmPassword = $("#txtConfirmPassword");
+
+            if (oldPassword.val() === undefined || oldPassword.val() === null || oldPassword.val() === '') {
+                validator.showErrors({
+                    "txtOldPassword": "Please Specify Old Password"
+                });
+                return;
+            }
+
+            if (newPassword.val() === undefined || newPassword.val() === null || newPassword.val() === '' || newPassword.val().length < 8) {
+                validator.showErrors({
+                    "txtPassword": "Please Specify New Password with more than 8 characters"
+                });
+                return;
+            }
+
+            if (confirmPassword.val() !== newPassword.val()) {
+                validator.showErrors({
+                    "txtConfirmPassword": "New Passwords do Not Match!"
+                });
+                return;
+            }
+
+            let fd = new FormData();
+            fd.append("oldPassword", oldPassword.val());
+            fd.append("newPassword", newPassword.val());
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "/Layout/ResetPassword",
+                data: fd,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (response) {
+                    // Do something with the return value from.Net method
+
+                    if (response?.StatusCode === 200) {
+
+                        swal({
+                            "title": "Success!",
+                            "text": response.Message,
+                            "type": "success",
+                            "confirmButtonClass": "btn btn-success m-btn m-btn--wide"
+                        });
+                        oldPassword.val('');
+                        newPassword.val('');
+                        confirmPassword.val('');
+
+                    } else {
+                        swal({
+                            "title": "Error Occured!",
+                            "text": response.Message,
+                            "type": "error",
+                            "confirmButtonClass": "btn btn-danger m-btn m-btn--wide"
+                        });
+                    }
+
+
+                },
+                error: function (err) {
+                    // if (showErrors)
+                    // btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                    console.error("Error: ", err);
+                    console.log("JQ", $.parseHTML(err.responseText))
+                    // showErrorMsg(form, 'danger', );
+
+                    swal({
+                        "title": "Error Occured!",
+                        "text": $.parseHTML(err.responseText)[1]?.innerText || "Error Occured While Registering please Try Again!",
+                        "type": "error",
+                        "confirmButtonClass": "btn btn-error m-btn m-btn--wide"
+                    });
+                }
+            });
+
+        }
+        $(document).ready(() => {
+            $(".dropify").dropify({
+                messages: {
+                    'default': 'Drag and drop a file here or click',
+                    'replace': 'Drag and drop or click to replace',
+                    'remove': 'Remove',
+                    'error': 'Ooops, something wrong happended.'
+                }
+            });
+        });
+    </script>
+}
+

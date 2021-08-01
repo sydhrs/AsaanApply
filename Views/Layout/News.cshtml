@@ -1,0 +1,27 @@
+﻿@model List<WebProject_NetFramework.DbContext.DbModels.News>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="pb-5 mb-4" data-offset-top="105" id="works">
+    <div class="bg-white mx-auto px-3 px-xl-5 pt-4 pb-5 box-shadow" style="max-width: 1300px;">
+        <h2 class="h3 block-title text-center"> Department News <small> People behind your great learning experience </small></h2>
+    <div class="row pt-4">
+        <!-- Portfolio Item-->
+        @foreach (var news in Model)
+        {
+            <div class="col-md-4 col-sm-6 mb-30">
+                <div class="portfolio-card">
+                    <a class="portfolio-thumb" href="portfolio-single-side-gallery-grid.html"><img src="~/Img/@(news.PictureName)" alt="Portfolio Thumbnail"></a>
+                    <div class="portfolio-card-body">
+                        <h5 class="portfolio-title"><a href="portfolio-single-side-gallery-grid.html">@(news.Title)</a></h5>
+                        <p class="text-muted"> @(news.Detail)</p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+    </div>
+    </section>

@@ -1,0 +1,51 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.StudentType
+
+@{
+    ViewBag.Title = "Student Types";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Detail
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <table class="table table-bordered table-striped thead-dark">
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Id)</td>
+                        <td style="vertical-align:middle;">
+                            @Html.DisplayFor(model => model.Id)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Name)</td>
+                        <td style="vertical-align:middle;">
+                            @Html.DisplayFor(model => model.Name)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Value)</td>
+                        <td style="vertical-align:middle;">
+                            @Html.DisplayFor(model => model.Value)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Description)</td>
+                        <td style="vertical-align:middle;">
+                            @Html.DisplayFor(model => model.Description)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "StudentTypes", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/StudentTypes/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>

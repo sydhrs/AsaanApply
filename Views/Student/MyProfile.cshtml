@@ -1,0 +1,349 @@
+﻿@using WebProject_NetFramework.Models
+@model StudentProfileDataModel
+
+@{
+    ViewBag.Title = "StudentProfile";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <!-- BEGIN: Subheader -->
+
+    <!-- END: Subheader -->
+    <div class="m-content">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4">
+                <div class="m-portlet m-portlet--full-height  ">
+                    <div class="m-portlet__body">
+                        <div class="m-card-profile">
+                            <div class="m-card-profile__title m--hide">
+                                Your Profile
+                            </div>
+                            @{
+                                string finalProfilePic;
+                                finalProfilePic = "data:image;base64," + Convert.ToBase64String(@Model.ApplicationUser.ProfilePic);
+                            }
+                          
+                            <div class="m-card-profile__pic">
+                                <div class="m-card-profile__pic-wrapper">
+                                    <img src="@finalProfilePic" alt="">
+                                </div>
+                            </div>
+                            <div class="m-card-profile__details">
+                                <span class="m-card-profile__details">Register ID: @Model.ApplicationUser.Id</span>
+                                <span class="m-card-profile__name"> @Model.ApplicationUser.Username</span>
+                                <a href="" class="m-card-profile__email m-link">@Model.ApplicationUser.Email</a>
+                            </div>
+                        </div>
+                        <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
+                            <li class="m-nav__separator m-nav__separator--fit"></li>
+                            <li class="m-nav__section m--hide">
+                                <span class="m-nav__section-text">Section</span>
+                            </li>
+                            <li class="m-nav__item">
+                                <a href="#" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">RollNo</span>
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@(Model?.MeritList?.Id + "-" + Model?.Admission?.DegreePursuingType?.Name + "-" + DateTime.Now.Year)</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li> 
+                            <li class="m-nav__item">
+                                <a href="#" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">Degree</span>
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@(Model?.Admission?.DegreePursuingType?.Name ?? "")</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-nav__item">
+                                <a href="#" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">Session</span>
+                                            @{var nuse = DateTime.Now;}
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@DateTime.Now.Year-@nuse.AddYears(4).Year</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-nav__item">
+                                <a href="#" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">Class</span>
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@DateTime.Today.Year</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-nav__item">
+                                <a href="#" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">Enrollment Date</span>
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@Model.Student.EnrollmentDate.ToString("D")</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="m-nav__item">
+                                <a href="../header/profile&amp;demo=default.html" class="m-nav__link">
+                                    <span class="m-nav__link-title">
+                                        <span class="m-nav__link-wrap">
+                                            <span class="m-nav__link-text">Section</span>
+                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">@(Model?.Student?.Section?.SectionName ?? "")</span></span>
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="m-portlet__body-separator"></div>
+                        <div class="m-widget1 m-widget1--paddingless">
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Session Admission Nnumber</h3>
+                                        @*<span class="m-widget1__desc">Awerage Weekly Profit</span>*@
+                                    </div>
+                                    @{var nu = DateTime.Now;}
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-brand">@DateTime.Now.Year-@nu.AddYears(4).Year</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Admission Nnumber</h3>
+                                        @*<span class="m-widget1__desc">Awerage Weekly Profit</span>*@
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-brand">@Model?.Admission?.Id</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-widget1__item">
+                                <div class="row m-row--no-padding align-items-center">
+                                    <div class="col">
+                                        <h3 class="m-widget1__title">Admission Date</h3>
+                                        @*<span class="m-widget1__desc">System bugs and issues</span>*@
+                                    </div>
+                                    <div class="col m--align-right">
+                                        <span class="m-widget1__number m--font-success">@Model.Student.EnrollmentDate.ToString("d")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8">
+                <div class="m-portlet m-portlet--full-height m-portlet--tabs  ">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-tools">
+                            <ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--left m-tabs-line--primary" role="tablist">
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_user_profile_tab_1" role="tab">
+                                        <i class="flaticon-share m--hide"></i>
+                                        PERSONAL
+                                    </a>
+                                </li>
+                                <li class="nav-item m-tabs__item">
+                                    <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_user_profile_tab_2" role="tab">
+                                        PARENT / GUARDIAN
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="m_user_profile_tab_1">
+                            <div class="m-portlet m-portlet--full-height">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                PERSONAL Info
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+                                    <div class="tab-content  m--padding-30">
+                                        <div class="m-form__section m-form__section--first">
+                                            @*<div class="m-form__heading">
+            <h4 class="m-form__heading-title">Personal Information</h4>
+        </div>*@
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Student Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="StudentName">@(Model.ApplicationUser.FirstName ?? "")  @(Model.ApplicationUser.MiddleName ?? "") @(Model.ApplicationUser.LastName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label"> First Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="StudentName">@(Model.ApplicationUser.FirstName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label"> Middle Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="StudentName">@(Model.ApplicationUser.MiddleName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label"> Last Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="StudentName">@(Model.ApplicationUser.LastName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Phone Number:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="phoneNoVal">@(Model.Person?.Address?.MobilePhone ?? "")</span>       @*    To remove this issue by simply adding '?'   *@       @*Cannot perform runtime binding on a null reference*@    @*Null propagation*@
+                                                </div>
+                                            </div>     @*    To remove this issue by simply adding '@ ( Model?. TableName?. Attribute ?? "")'   *@       @*System.Data.Entity.DynamicProxies.Student_2168DF6C5FE90BAB654AE132C2F403A0359CE3BCD6D34C1E540863C04ABF98BB?.PersonContact?.EmergencyName*@   @*error handling*@
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">CNIC:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static" id="CNICNoVal">@(Model.Person?.CnicNo ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Date Of Birth:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@((object) Model?.Person?.DateOfBirth ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Marital status:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.MaritalStatusType?.Value ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Gender:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model.Person?.GenderType.Value ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Email:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model.ApplicationUser.Email ?? "")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                        <div class="m-form__section">
+                                            <div class="m-form__heading">
+                                                <h4 class="m-form__heading-title">ADDRESS</h4>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Address Line 1:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.Address?.Address1 ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">District:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.Address?.City ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label"> City:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.Address?.City ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">State of Region:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.Address?.StateOfRegion ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Zip Code:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.Address?.ZipCode ?? "")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane " id="m_user_profile_tab_2">
+                            <div class="m-portlet m-portlet--full-height">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                PARENT / GUARDIAN DETAILS
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+                                    <div class="tab-content  m--padding-30">
+                                        <div class="m-form__section m-form__section--first">
+                                            <div class="m-form__heading">
+                                                <h4 class="m-form__heading-title">Gaurdian Informations</h4>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Gaurdian Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.PersonContact?.GuardianName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Gaurdian PhoneNO:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.PersonContact?.GuardianContact ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Gaurdian Address Line 1:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.PersonContact?.GuardianAddress ?? "")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                        <div class="m-form__section">
+                                            <div class="m-form__heading">
+                                                <h4 class="m-form__heading-title"> Emergency Detail</h4>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Emergency Name:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.PersonContact?.EmergencyName ?? "")</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                <label class="col-xl-6 col-lg-6 col-form-label">Emergency PhoneNO:</label>
+                                                <div class="col-xl-6 col-lg-6">
+                                                    <span class="m-form__control-static">@(Model?.Person?.PersonContact?.EmergencyContact ?? "")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

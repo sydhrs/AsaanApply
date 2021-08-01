@@ -1,0 +1,162 @@
+﻿@using WebProject_NetFramework.Models
+@model StudentProfileDataModel
+@{
+    ViewBag.Title = "Sections";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="m-content">
+    <div class="m-portlet">
+        <div class="m-portlet m-portlet--success m-portlet--head-solid-bg">
+            <div class="m-invoice-1">
+                <div class="m-invoice__wrapper">
+                    <div class="m-portlet__head">
+                        <div class="m-portlet__head-caption">
+                            <div class="m-portlet__head-title">
+                                <h6 class="m-portlet__head-text">
+                                    Section Allocation
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Begin::Section-->
+                    @*<div class="m-portlet" style="background-color: #f6eef8">*@
+                <div class="m-portlet">
+                        <div class="m-portlet__body  m-portlet__body--no-padding">
+                            <div class="row m-row--no-padding m-row--col-separator-xl">
+                                <div class="col-xl-4">
+                                    <!--begin:: Widgets/Stats2-1 -->
+                                    <div class="m-widget1">
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title">Section Name</h3>
+                                                    <span class="m-widget1__desc">Section </span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-brand">@(Model?.Student?.Section?.SectionName ?? "")</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title">Section Capacity</h3>
+                                                    <span class="m-widget1__desc"> Capacity </span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-danger">+@(Model?.Student?.Section?.Capacity )</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title">Roll No </h3>
+                                                    <span class="m-widget1__desc">Student Roll No</span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-success">@(Model?.MeritList?.Id)-@(Model?.Admission?.DegreePursuingType?.Name ?? "")-@(DateTime.Now.DayOfYear)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--end:: Widgets/Stats2-1 -->
+                                </div>
+                                <div class="col-xl-4">
+                                    <!-- begin:: Widgets/Daily Sales -->
+                                    <div class="m-widget1">
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title">Test Marks</h3>
+                                                    <span class="m-widget1__desc"> Marks in Test </span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-brand"> @(Model?.MeritList?.TestGrade?.Score ?? "") </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title"> Shift </h3>
+                                                    <span class="m-widget1__desc"> Morning or Evening Shift </span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-danger"> @((object) Model?.Admission?.IsMorningShift ?? "")</span>
+                                                    @*@{
+                                            var typeOfShifts = @Model.Admission.IsMorningShift ? "Morning" : "Evening";
+                                            if ((@Model.Admission.IsMorningShift == true))
+                                            {
+                                                <span class="m-widget1__number m--font-danger"> @typeOfShifts </span>
+                                            }else
+                                            {
+                                            <span class="m-widget1__number m--font-danger"> @typeOfShifts </span>
+                                            }
+                                        }*@
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-widget1__item">
+                                            <div class="row m-row--no-padding align-items-center">
+                                                <div class="col">
+                                                    <h3 class="m-widget1__title"> Starting Date of Classes </h3>
+                                                    <span class="m-widget1__desc"> Class Start Date </span>
+                                                </div>
+                                                <div class="col m--align-right">
+                                                    <span class="m-widget1__number m--font-success"> @(Model?.Student?.Section?.CreatedDate )</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4">
+
+                                    <!--begin:: Widgets/Profit Share-->
+                                    <div class="m-widget14">
+                                        <div class="m-widget14__header">
+                                            <h3 class="m-widget14__title">
+                                                Students
+                                            </h3>
+                                            <span class="m-widget14__desc">
+                                                Student of Section @(Model?.Student?.Section?.SectionName ?? "")
+                                            </span>
+                                        </div>
+                                        <div class="row  align-items-center">
+                                            <div class="col">
+                                                <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
+                                                    <div class="m-widget14__stat">@(Model?.Student?.Section?.SectionName ?? "")</div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="m-widget14__legends">
+                                                    <div class="m-widget14__legend">
+                                                        <span class="m-widget14__legend-bullet m--bg-accent"></span>
+                                                        <span class="m-widget14__legend-text">37% Female Students</span>
+                                                    </div>
+                                                    <div class="m-widget14__legend">
+                                                        <span class="m-widget14__legend-bullet m--bg-warning"></span>
+                                                        <span class="m-widget14__legend-text">47% Male Students</span>
+                                                    </div>
+                                                    <div class="m-widget14__legend">
+                                                        <span class="m-widget14__legend-bullet m--bg-brand"></span>
+                                                        <span class="m-widget14__legend-text">19% Other Students</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--end:: Widgets/Profit Share-->
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                    <!--End::Section-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

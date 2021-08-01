@@ -1,0 +1,200 @@
+﻿@using Humanizer
+@model List<WebProject_NetFramework.DbContext.DbModels.StudentChallan>
+
+@functions {
+    public DateTime Date { get; set; }
+}
+@{
+    Layout = null;
+    ViewBag.Title = "TestChallanForm";
+}
+
+
+@foreach (var studentChallan in Model)
+{
+    <h2 style="text-align: center;">
+        <font color="#000000">
+            <span style="background-color: rgb(255, 255, 255);">
+                HABIB BANK LIMITED<br>
+            </span>Bank Copy<br>
+        </font>
+    </h2>
+    <h3 style="text-align: center;">
+        <font color="#000000">
+            BSCS  @{
+                var typeOfShifts = studentChallan.Admission.IsMorningShift ? "Morning" : "Evening";
+                if ((@studentChallan.Admission.IsMorningShift == true))
+                {
+                    @typeOfShifts
+                }
+                else
+                {
+                    @typeOfShifts
+                }
+            } @DateTime.Now.Year Admission Fee Challan, Payable at all HBL Branches
+        </font>
+    </h3>
+    <h3 style="text-align: center;">
+        <font color="#000000">
+            Credit: Online Account #
+            <b style="font-size: 13px;">
+                <u>
+                    2398-70000005-03
+                </u>
+            </b>
+            <span style="font-size: 13px;">
+                <u>
+                    HBL GC University, Lahore
+                </u>
+                <br>
+            </span>
+        </font>
+    </h3>
+    <h3 style="text-align: center;">
+        <font color="#000000">
+            in favor of:
+            <u style="font-size: 13px;">
+                <b style="">
+                    VC GC&nbsp; University, Lahore<br><br>
+                </b>
+            </u>
+        </font>
+    </h3>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>
+                    <b>Challan No</b>
+                </td>
+                <td>
+                    <b>Issue Date</b>
+                </td>
+                <td>
+                    <b>Last Date</b><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @studentChallan.RefNo
+                </td>
+                <td>
+                    @studentChallan.CreatedDate.Value.Date
+                </td>
+                <td>
+                    @studentChallan.LastDate
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 style="text-align: left;">
+        <font color="#000000">
+            <span style="font-size: 13px;">
+                <b>
+                    Depositor Name:
+                </b>
+                @studentChallan.Admission.Student.FirstName @studentChallan.Admission.Student.MiddleName @studentChallan.Admission.Student.LastName
+                <br>
+                <b>
+                    CNIC          :&nbsp;
+                </b>
+                @studentChallan.Admission.Student.CnicNo
+                <br>
+                <b>
+                    Father/Guardian:
+                </b>
+                @studentChallan.Admission.Student.PersonContact.GuardianName
+                <br>
+                <b>
+                    District:
+                </b>
+                @studentChallan.Admission.Student.Address.City
+            </span>
+        </font>
+    </h3>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <td>
+                    <b>
+                        Particular
+                    </b>
+                </td>
+                <td>
+                    <b>
+                        Amount
+                    </b>
+                </td>
+                <td>
+                    <b>
+                        Amount in word
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    BSCS
+                    @{
+                        var typeOfShift = studentChallan.Admission.IsMorningShift ? "Morning" : "Evening";
+                        if ((@studentChallan.Admission.IsMorningShift == true))
+                        {
+                            @typeOfShift
+                        }
+                        else
+                        {
+                            @typeOfShift
+                        }
+                    } Admission @DateTime.Now.Year Application  @studentChallan.RefNo
+                </td>
+                <td>
+                    <b>
+                        Rs.
+                    </b>
+                    @studentChallan.Amount
+                </td>
+                <td>
+                    <b>
+                        Rupees.
+                    </b>  &nbsp;
+                    (@Convert.ToInt32(studentChallan.Amount).ToWords().Titleize() Only)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 style="text-align: left;">
+        <font color="#000000">
+            <span style="font-size: 13px;">
+                <b>
+                    Branch Stamp &amp; Signature:
+                </b>&nbsp;
+                <u>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </u>
+                <br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <b>
+                    (Habib Bank Limited)
+                </b>
+            </span>
+        </font>
+    </h3>
+    <h3 style="text-align: left;">
+        <font color="#000000">
+            <span style="font-size: 13px;">
+                This Challan must be deposited in Bank Branch Challan No #@studentChallan.RefNo must be entered in online transfer &nbsp;
+            </span>
+        </font>
+    </h3>
+    <h3 style="text-align: left;">
+        <font color="#000000">
+            <span style="font-size: 13px;">
+                Any type of online mobile transfer is Not acceptable if it does not contain Candidate own CNIC Number and challan #@studentChallan.RefNo
+            </span>
+        </font>
+    </h3>
+    <p style="text-align: center;">
+        <span style="background-color: rgb(255, 255, 255);">
+            - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        </span>
+    </p>
+
+
+}

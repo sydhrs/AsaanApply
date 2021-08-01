@@ -1,0 +1,370 @@
+﻿@using Microsoft.Ajax.Utilities
+@model List<WebProject_NetFramework.DbContext.DbModels.FacultyInfo>
+@{
+    ViewBag.Title = "Staff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="container py-5 mt-3" id="staff">
+    <h2 class="h3 block-title text-center mb-4">Department Staff <small>People behind your great learning experience</small></h2>
+    <div class="row">
+        <!-- Team member-->
+        @foreach (var fi in Model)
+        {
+            <div class="col-lg-3 col-sm-6">
+                <div class="team-card-style-1 mx-auto">
+                    <div class="team-card-inner">
+                        <div class="team-thumb">
+                            <img src="~/Img/Staff/@(fi.PicName)"/>" alt="">
+                        </div>
+                        <div class="team-social-bar text-center">
+                            @if (!string.IsNullOrEmpty(fi.FacebookName))
+                            {
+                                <a class="social-btn sb-style-4 sb-facebook" target="_blank" href="https://facebook.com/@(fi.FacebookName)">
+                                    <i class="socicon-facebook"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(fi.TwitterName))
+                            {
+                                <a class="social-btn sb-style-4 sb-twitter" target="_blank" href="https://twitter.com/@(fi.TwitterName)">
+                                    <i class="socicon-twitter"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(fi.SkypeName))
+                            {
+                                <a class="social-btn sb-style-4 sb-skype" target="_blank" href="https://skype.com/@(fi.SkypeName)">
+                                    <i class="socicon-skype"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(fi.LinkedInName))
+                            {
+                                <a class="social-btn sb-style-4 sb-linkedin" target="_blank" href="https://linkedin.com/@(fi.LinkedInName)">
+                                    <i class="socicon-linkedin"></i>
+                                </a>
+                            }
+                        </div>
+                        <a class="team-contact-link" href="tel:@fi.PhoneNo"><i class="fe-icon-phone"></i>&nbsp;@fi.PhoneNo</a><a class="team-contact-link" href="mailto:@(fi.Email)"><i class="fe-icon-mail"></i>&nbsp;@fi.Email</a>
+                    </div><span class="team-position">@fi.Position</span>
+                    <h4 class="team-name">@fi.Name</h4>
+                </div>
+            </div>
+        }
+    </div>
+
+@* <div class="row"> *@
+    @* *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/atif.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+72056557984"><i class="fe-icon-phone"></i>&nbsp;+7 (205) 655 79 84</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Head of Department </span> *@
+    @*             <h4 class="team-name">Atif Ishaq</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/adnan.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-google-plus" href="#"> *@
+    @*                         <i class="socicon-googleplus"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+57872336590"><i class="fe-icon-phone"></i>&nbsp;+5 (787) 233 65 90</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Adnan Khalid</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/ijazpic.bmp" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-github" href="#"> *@
+    @*                         <i class="socicon-github"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-stackoverflow" href="#"> *@
+    @*                         <i class="socicon-stackoverflow"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+19871625346"><i class="fe-icon-phone"></i>&nbsp;+1 (987) 162 53 46</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Lecturer </span> *@
+    @*             <h4 class="team-name">Ijaz Bukhari</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/hafeez.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-pinterest" href="#"> *@
+    @*                         <i class="socicon-pinterest"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-behance" href="#"> *@
+    @*                         <i class="socicon-behance"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-dribbble" href="#"> *@
+    @*                         <i class="socicon-dribbble"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+13907765843"><i class="fe-icon-phone"></i>&nbsp;+1 (390) 776 58 43</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Muhammad Hafeez</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* *@
+    @* </div> *@
+    @* *@
+    @* <div class="row"> *@
+    @* *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/asma.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+72056557984"><i class="fe-icon-phone"></i>&nbsp;+7 (205) 655 79 84</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Head of Department </span> *@
+    @*             <h4 class="team-name">Asma Kanwal</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/ayesha.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-google-plus" href="#"> *@
+    @*                         <i class="socicon-googleplus"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+57872336590"><i class="fe-icon-phone"></i>&nbsp;+5 (787) 233 65 90</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Ayesha Atta</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/ilyas.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-github" href="#"> *@
+    @*                         <i class="socicon-github"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-stackoverflow" href="#"> *@
+    @*                         <i class="socicon-stackoverflow"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+19871625346"><i class="fe-icon-phone"></i>&nbsp;+1 (987) 162 53 46</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Lecturer </span> *@
+    @*             <h4 class="team-name">Ilyas Fakhir</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/Yahya.png" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-pinterest" href="#"> *@
+    @*                         <i class="socicon-pinterest"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-behance" href="#"> *@
+    @*                         <i class="socicon-behance"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-dribbble" href="#"> *@
+    @*                         <i class="socicon-dribbble"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+13907765843"><i class="fe-icon-phone"></i>&nbsp;+1 (390) 776 58 43</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Yahyah Khurram</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* *@
+    @* </div> *@
+    @* *@
+    @* <div class="row"> *@
+    @* *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/awais.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+72056557984"><i class="fe-icon-phone"></i>&nbsp;+7 (205) 655 79 84</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Head of Department </span> *@
+    @*             <h4 class="team-name">Awais Qasim</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* *@
+    @* *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/basit.jpg" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-github" href="#"> *@
+    @*                         <i class="socicon-github"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-stackoverflow" href="#"> *@
+    @*                         <i class="socicon-stackoverflow"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-skype" href="#"> *@
+    @*                         <i class="socicon-skype"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+19871625346"><i class="fe-icon-phone"></i>&nbsp;+1 (987) 162 53 46</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Lecturer </span> *@
+    @*             <h4 class="team-name">Basit</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-facebook" href="#"> *@
+    @*                         <i class="socicon-facebook"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-google-plus" href="#"> *@
+    @*                         <i class="socicon-googleplus"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-linkedin" href="#"> *@
+    @*                         <i class="socicon-linkedin"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+57872336590"><i class="fe-icon-phone"></i>&nbsp;+5 (787) 233 65 90</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Nadeem Zafar</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @*     <!-- Team member--> *@
+    @*     <!-- Team member--> *@
+    @*     <div class="col-lg-3 col-sm-6"> *@
+    @*         <div class="team-card-style-1 mx-auto"> *@
+    @*             <div class="team-card-inner"> *@
+    @*                 <div class="team-thumb"> *@
+    @*                     <img src="~/Img/Staff/" alt=""> *@
+    @*                 </div> *@
+    @*                 <div class="team-social-bar text-center"> *@
+    @*                     <a class="social-btn sb-style-4 sb-twitter" href="#"> *@
+    @*                         <i class="socicon-twitter"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-pinterest" href="#"> *@
+    @*                         <i class="socicon-pinterest"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-behance" href="#"> *@
+    @*                         <i class="socicon-behance"></i> *@
+    @*                     </a> *@
+    @*                     <a class="social-btn sb-style-4 sb-dribbble" href="#"> *@
+    @*                         <i class="socicon-dribbble"></i> *@
+    @*                     </a> *@
+    @*                 </div><a class="team-contact-link" href="tel:+13907765843"><i class="fe-icon-phone"></i>&nbsp;+1 (390) 776 58 43</a><a class="team-contact-link" href="mailto:info@example.com"><i class="fe-icon-mail"></i>&nbsp;info@example.com</a> *@
+    @*             </div><span class="team-position"> Assistant Professor </span> *@
+    @*             <h4 class="team-name">Tauseef Iftikhar</h4> *@
+    @*         </div> *@
+    @*     </div> *@
+    @* *@
+    @* </div> *@
+</section>

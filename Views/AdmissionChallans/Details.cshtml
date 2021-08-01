@@ -1,0 +1,170 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.AdmissionChallan
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>AdmissionChallan</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Admission.StatusReason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Admission.StatusReason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EntityStatusType.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EntityStatusType.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RefNo)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RefNo)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FeeConcession)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FeeConcession)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NetAmount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NetAmount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VerifiedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VerifiedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPaid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsPaid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DatePaid)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DatePaid)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.StatusReason)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.StatusReason)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DueDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MimeType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MimeType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PaidChallan)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PaidChallan)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

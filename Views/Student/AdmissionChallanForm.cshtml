@@ -1,0 +1,229 @@
+﻿@model List<WebProject_NetFramework.DbContext.DbModels.AdmissionChallan>
+
+
+@{
+    ViewBag.Title = "AdmissionChallanForm";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+@section styles
+{
+    <link rel="stylesheet" href="~/Scripts/dropify/dist/css/dropify.css">
+}
+
+
+<div class="row">
+    <div class="col-lg-12 container">
+        <!--begin::Portlet-->
+        <div class="m-portlet m-portlet--success m-portlet--head-solid-bg">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <h3 class="m-portlet__head-text">
+                            Admission Challan Form
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="m-portlet__body">
+                <div class="form-group m-form__group row" style="margin-bottom: -25px !important;">
+                    <div class="col-md-6">
+                        <div class="row">
+                            @foreach (var admissionChallan in Model.FindAll(f => f.Admission?.IsMorningShift == true))
+                            {
+                                var typeOfShift = admissionChallan.Admission.IsMorningShift ? "Morning" : "Evening";
+
+                                <div class="col-12">
+                                    <div class="m-portlet m-portlet--success m-portlet--head-solid-bg m-portlet--rounded">
+                                        <div class="m-portlet__head">
+                                            <div class="m-portlet__head-caption">
+                                                <div class="m-portlet__head-title">
+                                                    <h3 class="m-portlet__head-text">
+                                                        Apply For @admissionChallan.Admission.DegreePursuingType.Name @typeOfShift
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__head-tools">
+                                                <ul class="m-portlet__nav">
+                                                    <li class="m-portlet__nav-item">
+                                                        <button onclick="printChallan(@admissionChallan.Id)" class="m-portlet__nav-link btn btn-light m-btn m-btn--pill m-btn--air">Get @typeOfShift Challan Form</button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="m-portlet__body">
+                                            <div id="someDiv@(admissionChallan.Id)"></div>
+                                            <p>Print the challan and deposite in any HBL Branch.</p>
+                                            <p>Take a clear picture of paid @typeOfShift.ToLower() Bank recipt in jpg or png format.</p>
+                                            <p>Upload @typeOfShift.ToLower() bank reciept below.</p>
+                                            <br>
+                                            <div class="form-group m-form__group col-12 mt-3">
+                                                <div class="">
+                                                    <input class="dropify"
+                                                           data-allowed-file-extensions="jpg png jpeg"
+                                                           data-allowed-formats="portrait"
+                                                           data-show-remove="true"
+                                                           id="paidChallan@(admissionChallan.Id)"
+                                                           name="PaidChallan@(admissionChallan.Id)"
+                                                           tag="PaidChallan"
+                                                           required
+                                                           type="file" />
+                                                </div>
+                                            </div>
+                                            <button type="button" onclick="submitChallan(@admissionChallan.Id)" class="btn m-btn--pill m-btn--air btn-success m-btn--wide">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-12">
+                                @foreach (var admissionChallan in Model.FindAll(f => f.Admission.IsMorningShift != true))
+                                {
+                                    var typeOfShift = admissionChallan.Admission.IsMorningShift ? "Morning" : "Evening";
+
+                                    <div class="col-12">
+                                        <div class="m-portlet m-portlet--success m-portlet--head-solid-bg m-portlet--rounded">
+                                            <div class="m-portlet__head">
+                                                <div class="m-portlet__head-caption">
+                                                    <div class="m-portlet__head-title">
+                                                        <h3 class="m-portlet__head-text">
+                                                            Apply For @admissionChallan.Admission.DegreePursuingType.Name @typeOfShift
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                                <div class="m-portlet__head-tools">
+                                                    <ul class="m-portlet__nav">
+                                                        <li class="m-portlet__nav-item">
+                                                            <button onclick="printChallan(@admissionChallan.Id)" class="m-portlet__nav-link btn btn-light m-btn m-btn--pill m-btn--air">Get @typeOfShift Challan Form</button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="m-portlet__body">
+                                                <div id="someDiv@(admissionChallan.Id)"></div>
+                                                <p>Print the challan and deposite in any HBL Branch.</p>
+                                                <p>Take a clear picture of paid @typeOfShift.ToLower() Bank recipt in jpg or png format.</p>
+                                                <p>Upload @typeOfShift.ToLower() bank reciept below.</p>
+                                                <br>
+                                                <div class="form-group m-form__group col-12 mt-3">
+                                                    <div class="">
+                                                        <input class="dropify"
+                                                               data-allowed-file-extensions="jpg png jpeg"
+                                                               data-allowed-formats="portrait"
+                                                               data-show-remove="true"
+                                                               id="paidChallan@(admissionChallan.Id)"
+                                                               name="PaidChallan@(admissionChallan.Id)"
+                                                               tag="PaidChallan"
+                                                               required
+                                                               type="file" />
+                                                    </div>
+                                                </div>
+                                                <button type="button" onclick="submitChallan(@admissionChallan.Id)" class="btn m-btn--pill m-btn--air btn-success m-btn--wide">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Portlet-->
+    </div>
+
+</div>
+
+@section Scripts{
+    <script src="~/Scripts/js/dropzone.js"></script>
+    <script src="~/Scripts/dropify/dist/js/dropify.js"></script>
+    <script type="text/javascript" language="javascript">
+
+        function PrintElem(elem, isHtml = false) {
+            var mywindow = window.open('', 'PRINT', 'height=600,width=800');
+            mywindow.document.write('<html><head><title>' + document.title + '</title>');
+            mywindow.document.write('<link href="/Assets/Studentassets/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />');
+            mywindow.document.write('<link href="/Assets/Studentassets/assets/demo/demo3/base/style.bundle.css" rel="stylesheet" type="text/css" />');
+            mywindow.document.write('</head><body >');
+            //mywindow.document.write('<h1>' + document.title + '</h1>');
+            mywindow.document.write(isHtml ? elem : document.getElementById(elem).innerHTML);
+            mywindow.document.write('</body></html>');
+            mywindow.document.close(); // necessary for IE >= 10
+            mywindow.focus(); // necessary for IE >= 10*/
+            mywindow.print();
+            //mywindow.close();
+            return true;
+        }
+
+        function printChallan(studentChallanId) {
+            var btn = $(event.target);
+            var div = $("#someDiv" + studentChallanId);
+            // console.log(studentChallanId,div);
+
+            $.get('/Student/_AdmissionChallanForm/' + studentChallanId,
+                function (data, status) {
+                    console.log("status", status);
+                    if (status === 'success') {
+                        // div.attr("hidden",'hidden');
+                        // div.html(`${data}`);
+                        PrintElem(data, true);
+                    } else {
+                        // handle error
+                    }
+
+                });
+        }
+
+        function submitChallan(studentChallanId) {
+            var btn = $(event.target);
+            var div = $("#someDiv" + studentChallanId);
+
+            let fd = new FormData();
+
+            var file = document.getElementById("paidChallan" + studentChallanId).files[0];
+            if (file === undefined || file === null) {
+                toastr.error("Please Select a File First!");
+                return;
+            }
+            fd.append("PaidChallan", file);
+
+
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: '/Student/UploadAdmissionChallanForm/' + studentChallanId,
+                data: fd,
+                processData: false,
+                contentType: false,
+                cache: false,
+                timeout: 600000,
+                success: function (response) {
+                    if (response.StatusCode === 200) {
+                        toastr.success(response.Message);
+                        setTimeout(() => {
+                            window.location.reload();
+                        },
+                            3000);
+                    } else {
+                        toastr.error(response?.Message || "Error Occurred while Uploading Challan. Please Try Again");
+                    }
+                    console.log(response);
+                },
+                error: function (err) {
+                    // if (showErrors)
+                    console.error("Error: ", err);
+                    console.log("JQ", $.parseHTML(err.responseText));
+                    toastr.error($.parseHTML(err.responseText)[1]?.innerText || "Error Occurred while Uploading Challan. Please Try Again");
+                }
+            });
+        }
+
+
+
+    </script>
+}

@@ -1,0 +1,161 @@
+﻿@model IEnumerable<WebProject_NetFramework.DbContext.DbModels.Admission>
+
+@{
+    ViewBag.Title = "TrackApplication";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<div class="m-portlet m-portlet--success m-portlet--head-solid-bg">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Track Your Application
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <table class="m-datatable" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th data-field="FirstName">
+                        @Html.DisplayNameFor(model => model.Student.FirstName)
+                    </th>
+                    <th data-field="MiddleName">
+                        @Html.DisplayNameFor(model => model.Student.MiddleName)
+                    </th>
+                    <th data-field="LastName">
+                        @Html.DisplayNameFor(model => model.Student.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusReason)
+                    </th>
+                    <th>
+                        Shift 
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.MiddleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusReason)
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.IsMorningShift ? "Morning" : "Evening")*@
+                            @{var typeOfShift = item.IsMorningShift ? "Morning" : "Evening";}
+                            @( typeOfShift )
+                        </td>
+                        <td>
+                            <div class="col">
+                                <!--begin: Dropdown-->
+                                <div class="m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" m-dropdown-toggle="click" aria-expanded="true">
+                                    <a href="#" class="m-portlet__nav-link m-dropdown__toggle btn btn-secondary m-btn m-btn--icon m-btn--pill">
+                                        <i class="la la-ellipsis-v"></i>
+                                    </a>
+                                    <div class="m-dropdown__wrapper" style="z-index: 101;">
+                                        <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust" style="left: auto; right: 24.5px;"></span>
+                                        <div class="m-dropdown__inner">
+                                            <div class="m-dropdown__body">
+                                                <div class="m-dropdown__content">
+                                                    <ul class="m-nav">
+                                                        <li class="m-nav__section m-nav__section--first">
+                                                            <span class="m-nav__section-text">Quick Actions</span>
+                                                        </li>
+                                                        <li class="m-nav__separator m-nav__separator--fit">
+                                                        <li class="m-nav__item">
+                                                            <a href="/Student/TestChallanForm" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">Test Challan Form</a>
+                                                        </li>
+                                                        <li class="m-nav__separator m-nav__separator--fit">
+                                                        <li class="m-nav__item">
+                                                            <a href="/Student/AdmissionChallanForm" class="btn btn-outline-danger m-btn m-btn--pill m-btn--wide btn-sm">Admission Challan Form</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: Dropdown-->
+                            </div>
+                            @*<a href="/Student/TestChallanForm/@item.Id"
+                                   class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill"
+                                   title="View Details">
+                                    <i class="la la-eye"></i>
+                                </a>
+                                <a href="/Student/AdmissionChallanForm/@item.Id"
+                                   class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                   title="Edit details">
+                                    <i class="la la-edit"></i>
+                                </a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Scripts
+{
+    @* <script src="~/Assets/StudentDashboardassets/demo/demo12/custom/components/base/dropdown.js"></script> *@
+    <script type="text/javascript">
+        $(".m-datatable").mDatatable({
+            data: { saveState: { cookie: !1 }},
+            search: { input: $("#generalSearch") },
+            columns: [
+                { field: "DepositPaid", type: "number" }, {
+                    field: "OrderDate",
+                    type: "date",
+                    format: "YYYY-MM-DD"
+                }, {
+                    field: "Status",
+                    title: "Status",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Pending", class: "m-badge--brand" },
+                            2: { title: "Delivered", class: " m-badge--metal" },
+                            3: { title: "Canceled", class: " m-badge--primary" },
+                            4: { title: "Success", class: " m-badge--success" },
+                            5: { title: "Info", class: " m-badge--info" },
+                            6: { title: "Danger", class: " m-badge--danger" },
+                            7: { title: "Warning", class: " m-badge--warning" }
+                        };
+                        return '<span class="m-badge ' + t[e.Status].class + ' m-badge--wide">' + t[e.Status].title + "</span>"
+                    }
+                }, {
+                    field: "Type",
+                    title: "Type",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Online", state: "danger" },
+                            2: { title: "Retail", state: "primary" },
+                            3: { title: "Direct", state: "accent" }
+                        };
+                        return '<span class="m-badge m-badge--' + t[e.Type].state + ' m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-' + t[e.Type].state + '">' + t[e.Type].title + "</span>"
+                    }
+                }
+            ]
+        })
+    </script>
+}

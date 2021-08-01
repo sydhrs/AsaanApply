@@ -1,0 +1,76 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.Message
+
+@{
+    ViewBag.Title = "Messages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Detail
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <table class="table table-bordered table-striped thead-dark">
+            <tbody>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Id)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Id)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Name)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Email)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Subject)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Subject)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Message1)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Message1)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.StatusReason)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.StatusReason)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.EntityStatusTypeId)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.EntityStatusTypeId)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.EntityStatusType.Name)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.EntityStatusType.Name)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "Messages", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/Messages/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>

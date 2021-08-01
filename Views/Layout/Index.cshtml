@@ -1,0 +1,580 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.SystemSetting
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //if (TempData["Message"] != null)
+    //{
+    //    //Response.Redirect("~/Layout/Index#contact");
+    //}
+}
+
+<div class="bg-parallax py-5">
+    <span class="bg-overlay" style="opacity: .5;"></span>
+    <div class="bg-parallax-img" data-parallax='{"y" : -100}'>
+        <img src="~/Img/Banner1.jpg".jpg" alt="Background Image">
+    </div>
+    <div class="container bg-parallax-content py-sm-5 my-3 my-md-5 text-center">
+        <div class="row justify-content-center">
+            @if (Model.AdmissionsOpen == true)
+            {
+                <div class="col-xl-9">
+                    <h1 class="display-4 text-white"> Department Of Computer Science, FAST National University Lahore </h1>
+                    <p class="lead text-white opacity-80 pb-sm-5"> Admissions are Open! Click the Button below to Apply Now! </p>
+                    <div class="d-none d-sm-inline-block align-middle mx-3">
+                        <a class="btn btn-style-2 btn-info mr-3 mb-3" href="/Layout/Login">Apply Now&nbsp;<i class=""></i></a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="col-xl-9">
+                    <h1 class="display-4 text-white"> Department Of Computer Science, FAST National University Lahore </h1>
+                    <p class="lead text-white opacity-80 pb-sm-5"> Admissions are Closed! </p>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<span class="bg-overlay" style="opacity: .65;"></span>
+
+<div class="bg-parallax-img" data-parallax="{&quot;y&quot; : -100}" style="transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1); -webkit-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1);">
+    <img src="/Img/Banner.jpg" alt="Background Image">
+</div>
+
+<div class="container bg-parallax-content py-sm-5 my-3 my-md-5 text-center">
+<div class="row justify-content-center">
+<!
+        {
+            <div class="col-xl-9">
+                <h1 class="display-4 text-white">Online Admission System For Department of Computer Science-->
+--><!--@*<span class="text-primary">.</span>*@-->
+<!--</h1>
+                <p class="lead text-white opacity-80 pb-sm-5">Admissions are Open! Click the Button below to Apply Now!</p>
+                <div class="d-none d-sm-inline-block align-middle mx-3">
+                    <a class="scroll-to btn btn-style-5 btn-primary" href="#Stepstoapply">Apply Now&nbsp;<i class="fe-icon-arrow-down"></i></a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-xl-9">
+                <h1 class="display-4 text-white">Online Admission System For Department of Computer Science<span class="text-primary">.</span></h1>
+                <p class="lead text-white opacity-80 pb-sm-5">Admissions are Closed!</p>
+            </div>
+        }
+    </div>
+
+</div>-->
+<!-- Hero-->
+<section class="container-fluid pt-5" id="introduction">
+    <div class="row justify-content-center">
+
+        <div class="col-xl-5 col-lg-6 mb-30">
+            <div class="bg-secondary position-relative pb-5">
+
+                <div class="text-center pt-4">
+                    @*<h3 class="font-family-body font-weight-light mb-2">All new</h3>*@
+                    <h2 class="mb-2 pb-1 post-tile"> Introduction </h2>
+                    <br>
+                    <p class="text-muted d-none d-sm-block">
+                        The Department of Computer Science, FAST National University Lahore
+                        was established in 2000 as the University was inaugurated by Former President and Chief of Army Staff, General Pervez Musharraf. At present, the Computer
+                        Science Department has 4 Computer Labs. These labs comprise of more than 230 computers.
+                        The Department offers BS, MS and Ph.D in Computer Science Degree Programs. The courses at BS, MS and Ph.D degree programs are selected
+                        as per Higher Education Commission(HEC) keeping in view the modern computing needs both
+                        for Software Industry and Academic Research.
+                    </p>
+
+                    @*<div class="countdown countdown-style-2 h4 mb-3" data-date-time="10/10/2020 12:00" data-labels="{&quot;label-day&quot;: &quot;Days&quot;, &quot;label-hour&quot;: &quot;Hours&quot;, &quot;label-minute&quot;: &quot;Mins&quot;, &quot;label-second&quot;: &quot;Secs&quot;}">
+                    <div class="countdown-item">
+                                <div class="countdown-value">59</div>
+                                <div class="countdown-label">Days</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value">18</div>
+                                <div class="countdown-label">Hours</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value">04</div>
+                                <div class="countdown-label">Mins</div>
+                            </div>
+                            <div class="countdown-item">
+                                <div class="countdown-value">11</div>
+                                <div class="countdown-label">Secs</div>
+                            </div>
+                        </div>*@
+                    <br><a class="btn btn-style-2 btn-info mr-3 mb-3" href="/Layout/Gallery"> Gallery! </a>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-xl-5 col-lg-6 d-none d-lg-block mb-30"><a class="img-cover" href="#" style="background-image: url(https://gcu.edu.pk/wp-content/uploads/2020/03/1.jpg);"></a></div>*@
+        <div class="col-xl-5 col-lg-6 d-none d-lg-block mb-30"><a class="img-cover" href="#" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/55/Fast_university_Lahore_campus.jpg"></a></div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="container-fluid pt-5" id="introduction">
+    <div class="row justify-content-center">
+
+        <div class="col-xl-5 col-lg-6 d-none d-lg-block mb-30" data-aos="fade-right" data-aos-offset="200"
+             data-aos-delay="50"
+             data-aos-duration="1000"
+             data-aos-easing="ease-in-out"
+             data-aos-mirror="true"
+             data-aos-once="false">
+            <div class="text-center pt-4">
+                <img src="~/Img/Staff/director.jpg"/>
+            </div>
+        </div>
+
+        <div class="col-xl-5 col-lg-6 mb-30" data-aos="fade-left" data-aos-offset="200"
+             data-aos-delay="50"
+             data-aos-duration="1000"
+             data-aos-easing="ease-in-out"
+             data-aos-mirror="true"
+             data-aos-once="false">
+
+
+            <div class="text-center pt-4">
+                @*<h3 class="font-family-body font-weight-light mb-2">All new</h3>*@
+                <h2 class="mb-2 pb-1 post-tile">A Message from the Campus Director </h2>
+                <br>
+                <p class="text-muted d-none d-sm-block">
+                    As Director of Lahore Campus, it is my pleasure to welcome you to our website.
+                    I invite you to navigate our programs, research projects, events and also get familiarized with the faculty and staff
+                    who are vigorously engaged in making the campus a center of excellence.
+                    Located in the heart of Lahore, the campus is committed to impart quality education and contribute significantly in the
+                    nation-building. Our efforts are directed towards strengthening the liaison between the academics and the industry
+                    through entrepreneurial ventures and well-thought-out curricula.
+                    Life at campus provides students with opportunities to develop social and specialized skills for their professional fields
+                    and maintain the balance between high academic standards and extra-curricular activities.
+                    The academic environment at the campus encourages students to further their learning beyond the classroom to enhance
+                    general awareness and appreciate diversity. We attach great importance to the social and ethical values
+                    and strive to inculcate them in the overall learning experiences of our students.
+                    Among the pioneers in IT education, we pride ourselves on the diverse degree programs that the University offers
+                    keeping the latest trends in mind. The research-oriented approach and state-of-the-art infrastructure of the campus
+                    are dedicated to the quality of enhanced academic environments to produce future leaders.
+                    Thank you for visiting our website.
+                </p>
+
+                @*<div class="countdown countdown-style-2 h4 mb-3" data-date-time="10/10/2020 12:00" data-labels="{&quot;label-day&quot;: &quot;Days&quot;, &quot;label-hour&quot;: &quot;Hours&quot;, &quot;label-minute&quot;: &quot;Mins&quot;, &quot;label-second&quot;: &quot;Secs&quot;}">
+                <div class="countdown-item">
+                            <div class="countdown-value">59</div>
+                            <div class="countdown-label">Days</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value">18</div>
+                            <div class="countdown-label">Hours</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value">04</div>
+                            <div class="countdown-label">Mins</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-value">11</div>
+                            <div class="countdown-label">Secs</div>
+                        </div>
+                    </div>*@
+                <br><a class="btn btn-style-2 btn-info mr-3 mb-3" href="/Layout/Gallery"> Gallery! </a>
+            </div>
+
+        </div>
+        @*<img src="~/Img/Staff/Syed_Kazmi3.png"/>*@
+
+
+    </div>
+</section>
+
+
+<!-- Statistics-->
+<section class="bg-white container-fluid border-top" id="admission">
+    <div class="row">
+        <div class="col-md-3 col-sm-6 border-right py-5 border-bottom">
+            <div class="animated-digits mx-auto text-center" data-number="5000">
+                <h5 class="animated-digits-digit"><span>0</span>+</h5>
+                <p class="animated-digits-text">Total Student Apply for Online Admission</p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 py-5 border-right border-bottom">
+            <div class="animated-digits mx-auto text-center" data-number="1500">
+                <h5 class="animated-digits-digit"><span>0</span>+</h5>
+                <p class="animated-digits-text"> Total Number of Students </p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 py-5 border-right border-bottom">
+            <div class="animated-digits mx-auto text-center" data-number="250">
+                <h5 class="animated-digits-digit"><span>0</span>+</h5>
+                <p class="animated-digits-text"> Application Handles Per Session </p>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6 py-5 border-bottom">
+            <div class="animated-digits mx-auto text-center" data-number="2000">
+                <h5 class="animated-digits-digit"><span>0</span>+</h5>
+                <p class="animated-digits-text"> Total Number of Graduate Students</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Services-->
+
+<section class="bg-dark py-5" id="about">
+    <div class="container pt-4">
+        <h2 class="h3 block-title text-white text-center px-3">Department of Computer Science Serving FAST National University Lahore since 2000</h2>
+        <div class="row pt-4">
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/News">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/serNew.jpg" alt="Branding &amp; identity">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> News </h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/Staff">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/ser2New.jpg" alt="UI / UX design">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> Department Staff </h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/Societies">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/ser3New.jpg" alt="Front-end development">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> Societies </h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/RoadMap">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/roadmap.png" alt="Digital strategy">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> Road Map </h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/Admission">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/ser5.jpg" alt="Back-end development">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> Admissions Criteria </h3>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <a class="d-block bg-white box-shadow text-decoration-none" href="/Layout/Programs">
+                    <img class="d-block w-100" src="~/Img/img/homepages/digital-agency/services/ser6.jpg" alt="Mobile development">
+                    <div class="p-4">
+                        <h3 class="text-xl font-weight-bold mb-0"> Programs Offer </h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Steps-->
+
+<section class="bg-light py-5" id="about" style="background-image: url(/Img/img/pages/about-hero-bg.png);">
+    <div class="container pt-4">
+        <div class="row pb-5">
+
+            <div class="col-sm-6 mb-4">
+                @*<iframe width="560" height="315" src="https://www.youtube.com/embed/HSUCIFI-R-w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>*@
+                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FFASTNULahore%2Fvideos%2F383624598797960%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+            <div class="col-sm-6 mb-4">
+                <h3>  Department Of Computer Science </h3>
+
+                <blockquote class="type2">
+
+                    <q>
+                        The Department of Computer Science, FAST National University Lahore
+                        was established in 2000 as the University was inaugurated by Former President and Chief of Army Staff, General Pervez Musharraf. At present, the Computer
+                        Science Department has 4 Computer Labs. These labs comprise of more than 230 computers.
+                        The Department offers BS, MS and Ph.D in Computer Science Degree Programs. The courses at BS, MS and Ph.D degree programs are selected
+                        as per Higher Education Commission(HEC) keeping in view the modern computing needs both
+                        for Software Industry and Academic Research.
+                    </q>
+
+                </blockquote>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form-->
+
+<section class="pt-5 pb-3" id="contact">
+    <div class="container py-1">
+        <h2 class="h3 block-title text-center mt-2 mb-5">And here is what they say</h2>
+        <div class="owl-carousel testimonials-carousel owl-loaded owl-drag" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;loop&quot;: true, &quot;margin&quot;: -15, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 4000, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;630&quot;:{&quot;items&quot;:2},&quot;991&quot;:{&quot;items&quot;:2},&quot;1200&quot;:{&quot;items&quot;:3}} }">
+            <div class="owl-stage-outer">
+                <div class="owl-stage" style="transform: translate3d(-2625px, 0px, 0px); transition: all 0.45s ease 0s; width: 4125px;">
+                    <div class="owl-item cloned" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 8 years and it is a great institution that produces highly skilled computer scientists.
+                                I have seen the market trends can I can say for sure that employers prefer FASTians over other students.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/hod.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Assitsant Prof Dr. Ali Afzal Malik
+                                        <cite>Head of Department, Fast-NU Lahore</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item cloned" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 2 years and teach Web Development.
+                                FAST is a great institution that produces highly skilled computer scientists. The students show great interest in learning and
+                                the environment around them pushes them to strive for further exelence.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/ShahzadAli.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Shahzad Ali
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item cloned" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 10 years and teach Database fundamentals.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/IshaqRaza.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Mr. Ishaq Raza
+                                        <cite> Assistant Professor </cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 4 years and teach Software Engineering.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/ZeeshanRana.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Zeeshan Rana
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 6 years and teach Android Development.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/FarooqAhmed.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Mr. Farooq Ahmed
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 10 years and teach Computer Networks.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/IbrahimNadir.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Mr. Ibrahim Nadir
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 5 years and teach Algorithms.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/SairaKarim.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Saira Karim
+                                        <cite>Lecturer</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item active" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 2 years and teach Game Development.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/SarfrazRaza.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Mr. Sarfraz Raza
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item cloned active" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 9 years and teach Artificial Intelligence.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/MubasherBaig.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Mubasher Baig
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item cloned active" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 5 years and teach Data Science.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/IrfanYounas.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Irfan Younas
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div><div class="owl-item cloned" style="width: 390px; margin-right: -15px;">
+                        <div class="blockquote testimonial">
+                            <p>
+                                I have been working at FAST for the last 6 years.
+                                FAST is a great institution that produces highly skilled computer scientists.
+                            </p>
+                            <footer class="testimonial-footer">
+                                <div class="testimonial-avatar">
+                                    <img src="/Img/Staff/RaheelaTariq.jpg" alt="Testimonial Author Avatar">
+                                </div>
+                                <div class="d-table-cell align-middle pl-2">
+                                    <div class="blockquote-footer">
+                                        Dr. Raheela Tariq
+                                        <cite>Assistant Professor</cite>
+                                    </div>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="owl-nav disabled">-->
+            @*<button type="button" role="presentation" class="owl-prev">
+
+                </button><button type="button" role="presentation" class="owl-next"></button>*@
+            @*</div><div class="owl-dots">
+                    <button role="button" class="owl-dot"><span></span>
+                    </button><button role="button" class="owl-dot active"><span></span>
+                        </button>
+                </div>*@
+            <!--</div>-->
+        </div>
+    </div>
+</section>
+@*<div class="container py-2">
+        <h2 class="h3 block-title text-center">Contact us<small>We'll be glad to answer all your questions regarding our online admission portal and department </small></h2>
+        <form class="needs-validation pt-4 pb-5" method="post" action="/Layout/Message">
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-@(TempData["Message"].ToString().Contains("Success") ? "success" : "danger") alert-dismissible fade show text-center">
+                    <span class="alert-close" data-dismiss="alert"></span>
+                    <i class="fe-icon-slash"></i>
+                    @TempData["Message"]
+                </div>
+            }
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6 form-group">
+                    <label for="cont-name">Your Name <span class='text-danger font-weight-medium'>*</span></label>
+                    <input class="form-control" type="text" id="cont-name" placeholder="Fahad Ashiq" name="Name" required>
+                    <div class="invalid-feedback">Please fill in your name!</div>
+                </div>
+                <div class="col-md-4 col-sm-6 form-group">
+                    <label for="cont-email">Email Address <span class='text-danger font-weight-medium'>*</span></label>
+                    <input class="form-control" type="email" id="cont-email" placeholder="fahadashiq30@gmail.com" name="Email" required>
+                    <div class="invalid-feedback">Please provide valid email address!</div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="cont-subject">Subject</label>
+                    <input class="form-control" id="cont-subject" placeholder="Title of your message" name="Subject">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cont-message">Message <span class='text-danger font-weight-medium'>*</span></label>
+                <textarea class="form-control" id="cont-message" rows="8" placeholder="Type your message..." required name="Message1"></textarea>
+                <div class="invalid-feedback">Please type your message!</div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-style-4 btn-icon-left btn-primary" type="submit" onclick=""><i class="fe-icon-mail text-md bg-white text-primary"></i>Send Message</button>
+            </div>
+        </form>
+    </div>*@
+

@@ -1,0 +1,83 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.DegreePursuingType
+
+@{
+    ViewBag.Title = " Degree Pursuing Type";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Edit
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                    <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-angle-down"></i></a>
+                </li>
+                @*<li class="m-portlet__nav-item">
+                        <a href="#" m-portlet-tool="reload" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-refresh"></i></a>
+                    </li>*@
+                <li class="m-portlet__nav-item">
+                    <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-expand"></i></a>
+                </li>
+                <li class="m-portlet__nav-item">
+                    <a href="#" m-portlet-tool="remove" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-close"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        @using (Html.BeginForm("Edit", "DegreePursuingTypes", FormMethod.Post, new { @class = "m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" }))
+                {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                            <div>
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        </div>*@
+            </div>
+            <div class="m-portlet__foot">
+                <button type="submit" class="btn btn-primary btn-large">save</button>
+                <button type="button" onclick="window.location.href = '/DegreePursuingTypes/Index'" class="btn btn-primary btn-large">Back to List</button>
+            </div>
+        }
+        </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

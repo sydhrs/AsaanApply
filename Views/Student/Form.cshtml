@@ -1,0 +1,722 @@
+﻿@using System.Web.Mvc.Html                                      @*extra*@
+@using WebProject_NetFramework.DbContext.DbModels
+@using WebProject_NetFramework.Models
+@using Microsoft.Ajax.Utilities
+@using System.Web.Script.Serialization
+@model dynamic
+
+@{
+    ViewBag.Title = "Application Form";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<div class="m-content">
+    <div class="row">
+        <div class="col-xl-9">
+            <!--Begin::Main Portlet-->
+
+            <div class="m-portlet">
+                <!--begin: Portlet Head-->
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Student Registration Form
+                                <small> (Register Now) </small>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Portlet Head-->
+                <!--begin: Form Wizard-->
+                <div class="m-wizard m-wizard--1 m-wizard--success" id="m_wizard">
+                    <!--begin: Message container -->
+                    <div class="m-portlet__padding-x">
+                        <!-- Here you can put a message or alert -->
+                    </div>
+
+                    <!--end: Message container -->
+                    <!--begin: Form Wizard Head -->
+                    <div class="m-wizard__head m-portlet__padding-x">
+
+                        <!--begin: Form Wizard Progress -->
+                        <div class="m-wizard__progress">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!--end: Form Wizard Progress -->
+                        <!--begin: Form Wizard Nav -->
+                        <div class="m-wizard__nav">
+                            <div class="m-wizard__steps">
+                                <div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1">
+                                    <div class="m-wizard__step-info">
+                                        <a href="#" class="m-wizard__step-number">
+                                            <span>
+                                                <span>1</span>
+                                            </span>
+                                        </a>
+                                        <div class="m-wizard__step-line">
+                                            <span></span>
+                                        </div>
+                                        <div class="m-wizard__step-label">
+                                            Personal Information
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_2">
+                                    <div class="m-wizard__step-info">
+                                        <a href="#" class="m-wizard__step-number">
+                                            <span>
+                                                <span>2</span>
+                                            </span>
+                                        </a>
+                                        <div class="m-wizard__step-line">
+                                            <span></span>
+                                        </div>
+                                        <div class="m-wizard__step-label">
+                                            Gaurdian Detail
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3">
+                                    <div class="m-wizard__step-info">
+                                        <a href="#" class="m-wizard__step-number">
+                                            <span>
+                                                <span>3</span>
+                                            </span>
+                                        </a>
+                                        <div class="m-wizard__step-line">
+                                            <span></span>
+                                        </div>
+                                        <div class="m-wizard__step-label">
+                                            Academic Detail
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4">
+                                    <div class="m-wizard__step-info">
+                                        <a href="#" class="m-wizard__step-number">
+                                            <span>
+                                                <span>4</span>
+                                            </span>
+                                        </a>
+                                        <div class="m-wizard__step-line">
+                                            <span></span>
+                                        </div>
+                                        <div class="m-wizard__step-label">
+                                            Confirmation
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--end: Form Wizard Nav -->
+                    </div>
+
+                    <!--end: Form Wizard Head -->
+                    <!--begin: Form Wizard Form-->
+                    <div class="m-wizard__form">
+                        <!--
+                        1) Use m-form--label-align-left class to alight the form input lables to the right
+                        2).> Use m-form--state class to highlight input control borders on form validation
+                        -->
+                        <form class="m-form m-form--label-align-left- m-form--state-" id="m_form">
+                            <div class="m-portlet__body">
+                                <!--begin: Form Wizard Step 1 -->
+                                <div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
+                                    <div class="row">
+                                        <div class="col-xl-8 offset-xl-2">
+                                            <div class="m-form__section m-form__section--first">
+                                                <div class="m-form__heading">
+                                                    <h3 class="m-form__heading-title">Enter Personal Details</h3>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-6">
+                                                        <label class=""> Student Image: </label>
+                                                        @{
+                                                            var finalProfilePic = "data:image;base64," + Convert.ToBase64String(Session.GetSession().ApplicationUser.ProfilePic);
+                                                        }
+                                                        <div class="input-group">
+                                                            <div style="border: #000000" name="Photo" tag="Student">
+                                                                <div>
+                                                                    <span class="m-topbar__userpic m-input--air m-input--pill">
+                                                                        <img src="@finalProfilePic" class="m--img-rounded m--marginless m--img-centered" alt="" style="height: 70px" ; width="70" aria-disabled="True" />
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-6">
+                                                        <label> First Name:</label>
+                                                        <input type="text" class="form-control m-input m-input--air m-input--pill" id="m_maxlength_4" maxlength="50" placeholder="" name="FirstName" tag="Student" value="@Model.ApplicationUser.FirstName" readonly="readonly">
+                                                        <span class="m-form__help"> Your first name</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="">Middle Name:</label>
+                                                        <input type="text" id="m_maxlength_5" maxlength="50" class="form-control m-input m-input--air m-input--pill" placeholder="" name="MiddleName" tag="Student" value="@Model.ApplicationUser.MiddleName" readonly="readonly">
+                                                        <span class="m-form__help"> Your middle name</span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-6">
+                                                        <label>Last Name:</label>
+                                                        <div class="m-input-icon m-input-icon--right">
+                                                            <input type="text" id="m_maxlength_7" maxlength="50" class="form-control m-input m-input--air m-input--pill" placeholder="" name="LastName" tag="Student" value="@Model.ApplicationUser.LastName" readonly="readonly">
+                                                            <span class="m-form__help">Your last name</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="">* Email Address:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-at"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" id="m_inputmask_9" class="form-control m-input m-input--air m-input--pill" name="Email" tag="Address" value="@Session.GetSession().ApplicationUser.Email" placeholder="Enter your email" data-toggle="m-tooltip" title="xyz@zyx.xyz" data-original-title="Tooltip description" aria-invalid="true" readonly="readonly">
+                                                        </div>
+                                                        <div id="email-error" class="form-control-feedback">Your Email Address.</div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-6">
+                                                        <label class="">* Applicant CNIC:</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-star-o"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="number" class="form-control m-input m-input--air m-input--pill" placeholder="" name="CnicNo" tag="Student" value="@Model.CnicNo" readonly="readonly">
+                                                        </div>
+                                                        <span class="m-form__help"> your CNIC Number E.g: xxxxxxxxxxxxx</span>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="">* Date of Birth: </label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-calendar"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control m-input m-input--air m-input--pill" placeholder="" name="DateOfBirth" tag="Student" value="@Model.DateOfBirth.ToString("yyyy MMMM dd")" readonly="readonly">
+                                                        </div>
+                                                        <span class="m-form__help"> your Date of Birth: <code>mm/dd/yyyy</code></span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-6">
+                                                        <label class="">* Phone Number::</label>
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">
+                                                                    <i class="la la-phone"></i>
+                                                                </span>
+                                                            </div>
+                                                            <input type="text" class="form-control m-input m-input--air m-input--pill" placeholder="" name="MobilePhone" tag="Address">
+                                                        </div>
+                                                        <span class="m-form__help">Phone number must be : <code>03xxxxxxxxx</code></span>
+                                                    </div>
+                                                    <div class="col-lg-6" style="padding: .5rem;">
+                                                        <label>Marital Status</label>
+                                                        <select class="form-control m-input m-input--air m-input--pill" type="text" style="padding: .5rem;" id="MaritalStatusType" name="MaritalStatusTypeId" tag="Student">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="m-form__section">
+                                                <div class="m-form__heading">
+                                                    <h3 class="m-form__heading-title">
+                                                        Address
+                                                    </h3>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">* Address Line 1:</label>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <input type="text" name="Address1" tag="Address" class="form-control m-input m-input--air m-input--pill" placeholder="" value="Hs #110, Street #109 Kacha Nisbat Road Lahore">
+                                                        <span class="m-form__help">House no #, Street address no # City </span>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">* District:</label>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <input type="text" name="District" tag="Address" class="form-control m-input m-input--air m-input--pill" placeholder="" value="Lahore">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">* City:</label>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <input type="text" name="City" tag="Address" class="form-control m-input m-input--air m-input--pill" placeholder="" value="Lahore">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">* State of Region:</label>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <input type="text" name="StateOfRegion" tag="Address" class="form-control m-input m-input--air m-input--pill" placeholder="" value="Punjab">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group m-form__group row">
+                                                    <label class="col-xl-3 col-lg-3 col-form-label">* Zip Code:</label>
+                                                    <div class="col-xl-9 col-lg-9">
+                                                        <input type="number" name="ZipCode" tag="Address" class="form-control m-input m-input--air m-input--pill" placeholder="" value="54000">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Form Wizard Step 1-->
+                            <!--begin: Form Wizard Step 2-->
+                            <div class="m-wizard__form-step" id="m_wizard_form_step_2">
+                                <div class="row">
+                                    <div class="col-xl-8 offset-xl-2">
+                                        <div class="m-form__section m-form__section--first">
+                                            <div class="m-form__heading">
+                                                <h3 class="m-form__heading-title">Gaurdian Detail</h3>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">* Gaurdian Name:</label>
+                                                <div class="col-xl-9 col-lg-9">
+                                                    <input type="text" class="form-control m-input m-input--air m-input--pill" id="m_maxlength_4" maxlength="15" placeholder="" name="GuardianName" tag="PersonContact" value="Nick">
+                                                    <span class="m-form__help">Please enter your gaurdian name</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">* Gaurdian Phone:</label>
+                                                <div class="col-xl-9 col-lg-9">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="la la-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control m-input m-input--air m-input--pill" placeholder="" name="GuardianContact" tag="PersonContact" value="1-541-754-3010">
+                                                    </div>
+                                                    <span class="m-form__help">Enter your valid phone in Pakistan phone format. E.g: xxxx-xxxxxxx</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">* Gaurdian Address Line 1:</label>
+                                                <div class="col-xl-9 col-lg-9">
+                                                    <input type="text" class="form-control m-input m-input--air m-input--pill" placeholder="" name="GuardianAddress" tag="PersonContact" value="Hs #110, Street #109 Kacha Nisbat Road Lahore">
+                                                    <span class="m-form__help">House no #, Street address no # City </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+                                        <div class="m-form__section m-form__section--first">
+                                            <div class="m-form__heading">
+                                                <h3 class="m-form__heading-title">Emergency Detail</h3>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">* Emergency Name:</label>
+                                                <div class="col-xl-9 col-lg-9">
+                                                    <input type="text" class="form-control m-input m-input--air m-input--pill" id="m_maxlength_4" maxlength="15" placeholder="" name="EmergencyName" tag="PersonContact" value="Nick">
+                                                    <span class="m-form__help">Please enter your emergency name</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-xl-3 col-lg-3 col-form-label">* Emergency Phone:</label>
+                                                <div class="col-xl-9 col-lg-9">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="la la-phone"></i>
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" class="form-control m-input m-input--air m-input--pill" placeholder="" name="EmergencyContact" tag="PersonContact" value="1-541-754-3010">
+                                                    </div>
+                                                    <span class="m-form__help">Enter your valid phone in Pakistan phone format. E.g: xxxx-xxxxxxx</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Form Wizard Step 2-->
+                            <!--begin: Form Wizard Step 3-->
+                            <div class="m-wizard__form-step" id="m_wizard_form_step_3">
+                                <div class="row">
+                                    <div class="col-xl-8 offset-xl-2">
+
+                                        <div class="m-form__section m-form__section--first">
+                                            <div class="m-form__heading">
+                                                <h3 class="m-form__heading-title">Academic Information</h3>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12"> Shift</label>
+                                                <select class="form-control m-bootstrap-select m-bootstrap-select--pill m_selectpicker col-lg-7" title="Select" data-style="btn-success" id="isMorningShift" name="IsMorningShift" tag="Admission">
+                                                    <option value="true">Morning</option>
+                                                    <option value="false">Evening</option>
+                                                    <option value="both">Both</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12"> Student Types</label>
+                                                <select class="form-control m-bootstrap-select m-bootstrap-select--pill m_selectpicker col-lg-7" title="Select" data-style="btn-success" id="studentTypeId" name="StudentTypeId" tag="Admission">
+                                                </select>
+                                            </div>
+                                            <div class="form-group m-form__group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12"> Academic Degree Types</label>
+                                                <select class="form-control m-bootstrap-select m-bootstrap-select--pill m_selectpicker col-lg-7" title="Select" data-style="btn-success" id="degreePursuingTypeId" name="DegreePursuingTypeId" tag="Admission">
+                                                </select>
+                                            </div>
+
+                                            <div class="m--space-15">
+                                                <hr />
+                                            </div>
+
+                                            <div id="academicsSection">
+                                            </div>
+
+                                            <div class="m-form__help">
+
+                                                <!--must use this helper element to display error message for the options-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--end: Form Wizard Step 3-->
+                            <!--begin: Form Wizard Step 4-->
+                            <div class="m-wizard__form-step" id="m_wizard_form_step_4">
+                                <div class="row">
+                                    <div class="col-xl-8 offset-xl-2">
+                                        <!--begin::Section-->
+                                        <div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist">
+                                            <!--begin::Item-->
+                                            <div class="m-accordion__item active">
+                                                <div class="m-accordion__item-head" role="tab" id="m_accordion_1_item_1_head" data-toggle="collapse" href="#m_accordion_1_item_1_body" aria-expanded="false">
+                                                    <span class="m-accordion__item-icon">
+                                                        <i class="fa flaticon-user-ok"></i>
+                                                    </span>
+                                                    <span class="m-accordion__item-title">1. Personal Information</span>
+                                                    <span class="m-accordion__item-mode"></span>
+                                                </div>
+                                                <div class="m-accordion__item-body collapse show" id="m_accordion_1_item_1_body" role="tabpanel" aria-labelledby="m_accordion_1_item_1_head" data-parent="#m_accordion_1">
+                                                    <!--begin::Content-->
+                                                    <div class="tab-content  m--padding-30">
+                                                        <div class="m-form__section m-form__section--first">
+                                                            <div class="m-form__heading">
+                                                                <h4 class="m-form__heading-title">Personal Information</h4>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Student Name:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="StudentName">@Session.GetSession().ApplicationUser.FirstName @Session.GetSession().ApplicationUser.MiddleName @Session.GetSession().ApplicationUser.LastName </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">PhoneNO:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="phoneNoVal">xxxx-xxxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">CNIC:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="CNICNoVal">@Model.CnicNo</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">DateBirth:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="DoBVal">@Model.DateOfBirth.ToString("yyyy MMMM dd")</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Email:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static">@Session.GetSession().ApplicationUser.Email</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Marital Status:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="MaritalStatusVal">MaritalStatus</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                        <div class="m-form__section">
+                                                            <div class="m-form__heading">
+                                                                <h4 class="m-form__heading-title">Student Address</h4>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Address Line 1:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="AddressVal">House no #, Street address no # City</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">District:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="DistrictVal">xxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label"> City:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="CityVal">xxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">State of Region:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="SoRVal">xxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Zip Code:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="ZipCodeVal">xxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Content-->
+                                                </div>
+                                            </div>
+
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="m-accordion__item">
+                                                <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_2_head" data-toggle="collapse" href="#m_accordion_1_item_2_body" aria-expanded="false">
+                                                    <span class="m-accordion__item-icon">
+                                                        <i class="fa  flaticon-placeholder"></i>
+                                                    </span>
+                                                    <span class="m-accordion__item-title">2. Gaurdian Information </span>
+                                                    <span class="m-accordion__item-mode"></span>
+                                                </div>
+                                                <div class="m-accordion__item-body collapse" id="m_accordion_1_item_2_body" role="tabpanel" aria-labelledby="m_accordion_1_item_2_head" data-parent="#m_accordion_1">
+
+                                                    <!--begin::Content-->
+                                                    <div class="tab-content  m--padding-30">
+                                                        <div class="m-form__section m-form__section--first">
+                                                            <div class="m-form__heading">
+                                                                <h4 class="m-form__heading-title">Gaurdian Informations</h4>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Gaurdian Name:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="GaurdianNameVal">xxxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Gaurdian PhoneNO:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="GaurdianPhoneNOVal">xxxx-xxxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Gaurdian Address Line 1:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="GaurdianAddressVal">House no #, Street address no # City</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                                        <div class="m-form__section">
+                                                            <div class="m-form__heading">
+                                                                <h4 class="m-form__heading-title"> Emergency Detail</h4>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Emergency Name:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="EmergencyNameVal">xxxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group m-form__group m-form__group--sm row">
+                                                                <label class="col-xl-4 col-lg-4 col-form-label">Emergency PhoneNO:</label>
+                                                                <div class="col-xl-8 col-lg-8">
+                                                                    <span class="m-form__control-static" id="EmergencyPhoneNOVal">xxxx-xxxxxxx</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!--end::Content-->
+                                                </div>
+                                            </div>
+
+                                            <!--end::Item-->
+                                            <!--begin::Item-->
+                                            <div class="m-accordion__item">
+                                                <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_3_head" data-toggle="collapse" href="#m_accordion_1_item_3_body" aria-expanded="false">
+                                                    <span class="m-accordion__item-icon">
+                                                        <i class="fa  flaticon-alert-2"></i>
+                                                    </span>
+                                                    <span class="m-accordion__item-title">3. Academic Information</span>
+                                                    <span class="m-accordion__item-mode"></span>
+                                                </div>
+                                                <div class="m-accordion__item-body collapse" id="m_accordion_1_item_3_body" role="tabpanel" aria-labelledby="m_accordion_1_item_3_head" data-parent="#m_accordion_1">
+                                                    <div class="form-group m-form__group m-form__group--sm row">
+                                                        <label class="col-form-label col-lg-2 col-sm-12">Roll No:</label>
+                                                        <div class="col-xl-8 col-lg-8">
+                                                            <span class="m-form__control-static" id="IsMorningShiftVal">xxxx-xxxxxxx</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group m-form__group--sm row">
+                                                        <label class="col-xl-4 col-lg-4 col-form-label">Emergency PhoneNO:</label>
+                                                        <div class="col-xl-8 col-lg-8">
+                                                            <span class="m-form__control-static" id="StudentTypeIdVal">xxxx-xxxxxxx</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group m-form__group m-form__group--sm row">
+                                                        <label class="col-xl-4 col-lg-4 col-form-label">Emergency PhoneNO:</label>
+                                                        <div class="col-xl-8 col-lg-8">
+                                                            <span class="m-form__control-static" id="DegreePursuingTypeIdVal">xxxx-xxxxxxx</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-content  m--padding-30" id="academicInformationContent">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--end::Item-->
+                                        </div>
+
+                                        <!--end::Section-->
+                                        <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                                        <div class="form-group m-form__group m-form__group--sm row">
+                                            <div class="col-xl-12">
+                                                <div class="m-checkbox-inline">
+                                                    <label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+                                                        <input type="checkbox" name="accept" value="1">
+                                                        Click here to indicate that you have enter all the information perfectly and the given information which you provide us cannot be change later.
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end: Form Wizard Step 4-->
+                            <!--end: Form Body -->
+                            <!--begin: Form Actions -->
+                            <div class="m-portlet__foot m-portlet__foot--fit m--margin-top-40">
+                                <div class="m-form__actions m-form__actions" style="padding-bottom: 15px;padding-top: 15px;">
+                                    <div class="row">
+                                        <div class="col-lg-2"></div>
+                                        <div class="col-lg-4 m--align-left">
+                                            <button class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air" data-wizard-action="prev">
+                                                <span>
+                                                    <i class="la la-arrow-left "></i>&nbsp;&nbsp;
+                                                    <span>Back</span>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-4 m--align-right">
+                                            <button class="btn btn-primary m-btn m-btn--custom m-btn--icon" type="submit" data-wizard-action="submit">
+                                                <span>
+                                                    <i class="la la-check"></i>&nbsp;&nbsp;
+                                                    <span>Submit</span>
+                                                </span>
+                                            </button>
+                                            <button class="btn btn-warning m-btn m-btn--custom m-btn--icon" data-wizard-action="next">
+                                                <span>
+                                                    <span>Save & Continue</span>&nbsp;&nbsp;
+                                                    <i class="la la-arrow-right"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                        <div class="col-lg-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                <!--end: Form Wizard Form-->
+                </div>
+            <!--end: Form Wizard-->
+            </div>
+        <!--End::Main Portlet-->
+        </div>
+        <div class="col-xl-3">
+            <div class="m-portlet">
+                <div class="m-portlet__body">
+                    <div class="m-section">
+                        <h2 class="m-section__heading">Guidence about Admission Form Filling</h2>
+                        <div class="m-section__content">
+                            <ol>
+                                <li>
+                                    <span style="font-family: 'Times New Roman',serif;">
+                                        <span style="color: #000000; "><span style="background-color: rgb(255, 255, 255);">Read all columns</span> before filling.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="font-family: 'Times New Roman',serif;">
+                                        <span style="color: #000000; ">Do not enter wrong Information.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="font-family: 'Times New Roman',serif;">
+                                        <span style="color: #000000; ">Every Field in the form is compulsory.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="font-family: 'Times New Roman',serif;">
+                                        <span style="color: #000000; ">Once form is submitted can not be changed.</span>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span style="color: #000000; ">
+                                        <span style="font-family: 'Times New Roman',serif;">Scanned copy of your picture is required to complete the registration. Please save your picture first and then start registration </span><b>(Mobile Selfies are not allowed)</b><span style="font-family: 'Times New Roman',serif;">.</span>
+                                    </span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="m-separator m-separator--fit"></div>
+
+                    <div class="m-widget1 m-widget1--paddingless">
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <h3 class="m-widget1__title">Note:</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <p><b>1.</b> Please carefully read "<b>Eligiblity</b>", "<b>How To Apply</b>", and "<b>Frequently Asked Questions"</b> before applying.<br></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-widget1__item">
+                            <div class="row m-row--no-padding align-items-center">
+                                <div class="col">
+                                    <p> <b>2.</b> Only one candidate can register on a <b>CNIC</b>, <b>Mobile Number</b> and <b>Email</b>. If you have already registered, please use that login.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end: Form Wizard Step 4-->
+                    </div>
+                    <!--end: Form Body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/Scripts/js/bootstrap-maxlength.js"></script>
+    <script src="~/Scripts/js/input-mask.js"></script>
+    <script src="~/Scripts/js/dropzone.js"></script>
+    <script src="~/Scripts/js/bootstrap-select.js"></script>
+    <script src="~/Scripts/wizard.js"></script>
+}

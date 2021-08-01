@@ -1,0 +1,51 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.AdmissionCriteria
+
+@{
+    ViewBag.Title = "Admission Criterias";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Detail
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Criteria)
+                </dt>
+                <dd>
+                    @Html.Raw(Model.Criteria)
+                </dd>
+
+                <dt>
+                    DegreePursuingType @* @Html.DisplayNameFor(model => model.DegreePursuingTypeId)*@
+                </dt>
+
+                <dd>
+                    @ViewBag.DPName
+                    @*@Html.DisplayFor(model => model.DegreePursuingTypeId)*@
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "AdmissionCriterias", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/AdmissionCriterias/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>

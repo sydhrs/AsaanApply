@@ -1,0 +1,130 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.StudentChallan
+
+@{
+    ViewBag.Title = "Student Test Challan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Detail
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <table class="table table-bordered table-striped thead-dark">
+            <tbody>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Admission.Id)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Admission.Id)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.RefNo)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.RefNo)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Amount)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Amount)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.DatePaid)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.DatePaid)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.StatusReason)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.StatusReason)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.MimeType)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.MimeType)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.CreatedBy)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.CreatedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.CreatedDate)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.VerifiedBy)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.VerifiedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.UpdatedBy)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.UpdatedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.UpdatedDate)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.UpdatedDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.LastDate)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.LastDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.PaidChallan)</td>
+                    <td style="vertical-align:middle;">
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">challan</button>
+                        @*@Html.DisplayFor(model => model.LastDate)*@
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.IsPaid)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.IsPaid)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                    <h4 class="modal-title">Student Challan</h4>
+                </div>
+                <div class="modal-body">
+                    <p>This is a large modal.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "StudentChallans", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/StudentChallans/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>

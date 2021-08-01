@@ -1,0 +1,103 @@
+﻿@using WebProject_NetFramework.Controllers
+@using WebProject_NetFramework.DbContext.DbModels
+@using WebProject_NetFramework.Models
+
+@model WebProject_NetFramework.DbContext.DbModels.Message
+
+@{
+    ViewBag.Title = "Message";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    if (TempData["Message"] != null)
+    {
+        Response.Redirect("~/Student/Dashboard");
+    }
+}
+
+<div class="m-portlet m-portlet--success m-portlet--head-solid-bg">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Leave your Message
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <form class="needs-validation pt-4 pb-5" method="post" action="/Student/Message">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 form-group">
+                    <label for="cont-name">Your Name <span class="text-danger font-weight-medium">*</span></label>
+                    <input class="form-control" type="text" id="cont-name" value="@Session.GetSession().ApplicationUser.Username" name="Name" required="" disabled="disabled">
+                    <div class="invalid-feedback">Please fill in your name!</div>
+                </div>
+                <div class="col-md-4 col-sm-6 form-group">
+                    <label for="cont-email">Email Address <span class="text-danger font-weight-medium">*</span></label>
+                    <input class="form-control" type="email" id="cont-email" value="@Session.GetSession().ApplicationUser.Email" name="Email" required="" disabled="disabled">
+                    <div class="invalid-feedback">Please provide valid email address!</div>
+                </div>
+                <div class="col-md-4 form-group">
+                    <label for="cont-subject">Subject</label>
+                    <input class="form-control" id="cont-subject" placeholder="Title of your message" name="Subject">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cont-message">Message <span class="text-danger font-weight-medium">*</span></label>
+                <textarea class="form-control" id="cont-message" rows="8" placeholder="Type your message..." required="" name="Message1"></textarea>
+                <div class="invalid-feedback">Please type your message!</div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-style-4 btn-icon-left btn-success" type="submit" onclick=""><i class="fe-icon-mail"></i>Send Message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script src="~/Assets/StudentDashboardassets/demo/demo12/custom/components/base/dropdown.js"></script>
+    <script type="text/javascript">
+        $(".m-datatable").mDatatable({
+            data: { saveState: { cookie: !1 } },
+            search: { input: $("#generalSearch") },
+            columns: [
+                { field: "DepositPaid", type: "number" }, {
+                    field: "OrderDate",
+                    type: "date",
+                    format: "YYYY-MM-DD"
+                }, {
+                    field: "Status",
+                    title: "Status",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Pending", class: "m-badge--brand" },
+                            2: { title: "Delivered", class: " m-badge--metal" },
+                            3: { title: "Canceled", class: " m-badge--primary" },
+                            4: { title: "Success", class: " m-badge--success" },
+                            5: { title: "Info", class: " m-badge--info" },
+                            6: { title: "Danger", class: " m-badge--danger" },
+                            7: { title: "Warning", class: " m-badge--warning" }
+                        };
+                        return '<span class="m-badge ' + t[e.Status].class + ' m-badge--wide">' + t[e.Status].title + "</span>"
+                    }
+                }, {
+                    field: "Type",
+                    title: "Type",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Online", state: "danger" },
+                            2: { title: "Retail", state: "primary" },
+                            3: { title: "Direct", state: "accent" }
+                        };
+                        return '<span class="m-badge m-badge--' + t[e.Type].state + ' m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-' + t[e.Type].state + '">' + t[e.Type].title + "</span>"
+                    }
+                }
+            ]
+        })
+    </script>
+}
+
+
+

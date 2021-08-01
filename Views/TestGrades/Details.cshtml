@@ -1,0 +1,95 @@
+﻿@model WebProject_NetFramework.DbContext.DbModels.TestGrade
+
+@{
+    ViewBag.Title = "Test Grade";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="m-portlet m-portlet--accent m-portlet--head-solid-bg m-portlet--head-sm" m-portlet="true" id="m_portlet_tools_1">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Detail
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <table class="table table-bordered table-striped thead-dark">
+            <tbody>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">@Html.DisplayNameFor(model => model.Id)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Id)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%">Student Name</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Student.FirstName)
+                        @Html.DisplayFor(model => model.Student.MiddleName)
+                        @Html.DisplayFor(model => model.Student.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Score)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Score)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Grade)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Grade)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.Comment)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.Comment)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.AdmissionId)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.AdmissionId)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.CreatedBy)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.CreatedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.CreatedDate)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.CreatedDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.UpdatedBy)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.UpdatedBy)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.UpdatedDate)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.UpdatedDate)
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:middle; width: 30%"> @Html.DisplayNameFor(model => model.IsActive)</td>
+                    <td style="vertical-align:middle;">
+                        @Html.DisplayFor(model => model.IsActive)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="m-portlet__foot">
+        @Html.ActionLink("Edit", "Edit", "TestGrades", new { id = Model.Id }, new { @class = "btn btn-primary btn-large" })
+        <button type="button" onclick="window.location.href = '/TestGrades/Index'" class="btn btn-primary btn-large">Back to List</button>
+    </div>
+</div>

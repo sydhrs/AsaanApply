@@ -1,0 +1,175 @@
+﻿@model IEnumerable<WebProject_NetFramework.DbContext.DbModels.Admission>
+
+@{
+    ViewBag.Title = "Manage Application";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Manage Applications
+                </h3>
+            </div>
+        </div>
+        <div class="m-portlet__head-tools">
+            <div class="m-input-icon m-input-icon--left  m--margin-right-10">
+                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                <span class="m-input-icon__icon m-input-icon__icon--left">
+                    <span>
+                        <i class="la la-search"></i>
+                    </span>
+                </span>
+            </div>
+            <a href="/Admissions/Create" style=" min-width: 200px;" class="btn btn-primary m-btnm-btn--icon m-btn--wide m-btn--md m-btn--air m-btn--pill">
+                <span>
+                    <i class="la la-cart-plus"></i>
+                    <span> New Applications </span>
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <div class="m-portlet__body">
+        <table class="m-datatable" width="100%">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DegreePursuingType.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntityStatusType.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StudentType.Name)
+                    </th>
+                    @* <th> *@
+                        @* @Html.DisplayNameFor(model => model.TestGrade.Score) *@
+                    @* </th> *@
+                    <th>
+                        @Html.DisplayNameFor(model => model.StatusReason)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UpdatedDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.IsActive)
+                    </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DegreePursuingType.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EntityStatusType.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Student.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentType.Name)
+                        </td>
+                        @* <td> *@
+                            @* @Html.DisplayFor(modelItem => item.TestGrade.Score) *@
+                        @* </td> *@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StatusReason)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UpdatedDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsActive)
+                        </td>
+                        <td>
+                            <a href="/Admissions/Details/@item.Id"
+                               class="m-portlet__nav-link btn m-btn m-btn--hover-info m-btn--icon m-btn--icon-only m-btn--pill"
+                               title="View Details">
+                                <i class="la la-eye"></i>
+                            </a>
+                            <a href="/Admissions/Edit/@item.Id"
+                               class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                               title="Edit details">
+                                <i class="la la-edit"></i>
+                            </a>
+                            <a href="/Admissions/Delete/@item.Id" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill"
+                               title="Delete">
+                                <i class="la la-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            <tbody>
+        </table>
+
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(".m-datatable").mDatatable({
+            data: { saveState: { cookie: !1 }},
+            search: { input: $("#generalSearch") },
+            columns: [
+                { field: "DepositPaid", type: "number" }, {
+                    field: "OrderDate",
+                    type: "date",
+                    format: "YYYY-MM-DD"
+                }, {
+                    field: "Status",
+                    title: "Status",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Pending", class: "m-badge--brand" },
+                            2: { title: "Delivered", class: " m-badge--metal" },
+                            3: { title: "Canceled", class: " m-badge--primary" },
+                            4: { title: "Success", class: " m-badge--success" },
+                            5: { title: "Info", class: " m-badge--info" },
+                            6: { title: "Danger", class: " m-badge--danger" },
+                            7: { title: "Warning", class: " m-badge--warning" }
+                        };
+                        return '<span class="m-badge ' + t[e.Status].class + ' m-badge--wide">' + t[e.Status].title + "</span>"
+                    }
+                }, {
+                    field: "Type",
+                    title: "Type",
+                    template: function (e) {
+                        var t = {
+                            1: { title: "Online", state: "danger" },
+                            2: { title: "Retail", state: "primary" },
+                            3: { title: "Direct", state: "accent" }
+                        };
+                        return '<span class="m-badge m-badge--' + t[e.Type].state + ' m-badge--dot"></span>&nbsp;<span class="m--font-bold m--font-' + t[e.Type].state + '">' + t[e.Type].title + "</span>"
+                    }
+                }
+            ]
+        })
+    </script>
+}

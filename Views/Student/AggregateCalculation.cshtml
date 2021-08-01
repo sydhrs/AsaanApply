@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "AggregateCalculation";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<div class="m-portlet m-portlet--success m-portlet--head-solid-bg">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    Calculate Your Aggregate
+                </h3>
+            </div>
+        </div>
+        
+        <div class="m-portlet__head-tools">
+            <div class="m-input-icon m-input-icon--left  m--margin-right-10">
+                <span class="m-input-icon__icon m-input-icon__icon--left">
+                    <span>
+                        <i class="la la-search"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>  
+    <div class="m-portlet__body">
+        <form class="p-5 formcolor" method="POST">
+            <div class="form-group text-center row">
+                <div class="col-sm-12 col-md-12 text-center align-self-center">
+                    <h3 class="tittle text-dark font-weight-bold">GCU Merit Calculator</h3>
+                    <hr class="style-one">
+                </div>
+                <h3> BSCS Merit Calculation: </h3>
+            </div>
+            <div class="form-group row ">
+                <div class="col-sm-12 col-md-2 text-center align-self-center">  <label for="inputdefault"><b>Intermediate Marks</b></label>  </div>
+                <div class="col-sm-12 col-md-5  ">  <input class="form-control mb-1" id="part1" placeholder="Obtain marks in Intermediate" type="number" required="" minlength="0">  </div>
+                <div class="col-sm-12 col-md-5 "> <input class="form-control mb-1 " id="part1total" placeholder="Total marks in Intermediate" type="number" required="" min="0"> </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-2 text-center align-self-center">
+                    <label for="inputdefault">
+                        <b>
+                            Entry Test
+                        </b>
+                    </label>
+                </div>
+                <div class="col-sm-12 col-md-5  ">  <input class="form-control mb-1" id="matric" placeholder="Obtain marks in Entry Test" type="number" required="" min="0">  </div>
+                <div class="col-sm-12 col-md-5 "> <input class="form-control" id="matrictotal" placeholder="Total marks in Entry Test" type="number" required="" min="0"> </div>
+            </div>
+
+            <div class="form-group text-center row">
+                <div class="col-sm-12 col-md-12 text-center align-self-center">
+                    <div id="finalresult"></div>
+                </div>
+            </div>
+            <div class="form-group text-center row">
+                <div class="col-sm-12 col-md-12 text-center align-self-center">
+                    <button type="submit" class="btn btn-outline-info" onclick="gcuresult(event)">Calculate</button>
+                </div>
+            </div>
+
+
+          
+
+
+            <!-- share this for sahre button -->
+            @*<div class="row float-right">
+            <div class="text-right">
+
+                <div class="social ">
+                    <div class="social__item">
+                    </div>
+                        <p>Share Calculator: </p>
+                    <div class="social__item">
+                        <span class="fa fa-whatsapp wrapper" data-social="wa"></span>
+                    </div>
+                    <div class="social__item">
+                        <span class="fa fa-facebook wrapper" data-social="fb"></span>
+                    </div>
+
+                    <div class="social__item">
+                        <span class="fa fa-twitter wrapper" data-social="tw"></span>
+                    </div>
+                    <div class="social__item">
+                        <span class="fa fa-linkedin wrapper" data-social="ln"></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>*@
+            <!-- end of share this buttons  -->
+        </form>
+    </div>
+</div>
+
+<script>
+        
+    function gcuresult(event){
+        var part1  =  parseInt(document.getElementById("part1").value);
+        var part1total = parseInt(document.getElementById("part1total").value);
+        var matric = parseInt(document.getElementById("matric").value);
+        var matrictotal = parseInt(document.getElementById("matrictotal").value);
+       
+        if( isNaN(part1) || isNaN(part1total) || isNaN(matric) || isNaN(matrictotal)  ){ }
+        else{
+            event.preventDefault(); 
+            var sum= ((.4*(matric/matrictotal)) + (.6*(part1/part1total)) ) * 100;       
+            $('#finalresult').html( '<hr class="style-three"> <h3> Your Aggregate = <span id=showresult>'+sum.toFixed(2)+' % </span> </h3> <hr class="style-three"> ');       
+        }
+    }
+</script>

@@ -1,0 +1,94 @@
+﻿@model Dictionary<long, List<WebProject_NetFramework.DbContext.DbModels.AdmissionCriteria>>
+    @{
+    ViewBag.Title = "Admission Criteria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container py-5 mt-3">
+
+    <h2 class="h3 block-title text-center mb-4"> Admission Criteria <small> The information below about criteria of BSCS, MSCS and PHD</small></h2>
+    <!-- Accordion Style 2 -->
+    <div class="container">
+        <div class="accordion accordion-style-2" id="accordion1">
+            @foreach (var item in Model)
+            {
+                <!-- Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h6>
+                            <a class="collapsed" href="#collapse@(item.Key)" data-toggle="collapse">
+                                @(item.Key == 1 ? "1 BS(Hons)Computer Science Admission Criteria" :item.Key == 2? "2 MS-CS Eligibility Criteria" : "3 PHD Admission Criteria")
+                            </a>
+                        </h6>
+                    </div>
+                    <div class="collapse" id="collapse@(item.Key)" data-parent="#accordion1">
+                        <div class="card-body">
+                            <div class="opacity-75">
+                                @foreach (var ad in item.Value)
+                                {
+                                    @Html.Raw(ad.Criteria)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</section>
+
+<!--===============-->
+<!-- Accordion Style 2 -->
+<!--<div class="accordion accordion-style-2" id="accordion1">-->
+<!-- Card -->
+<!--<div class="card">
+    <div class="card-header">
+        <h6>
+            <a class="collapsed" href="#collapseOne" data-toggle="collapse">
+                #1 BS(Hons)Computer Science Admission Criteria
+            </a>
+        </h6>
+    </div>
+    <div class="collapse" id="collapseOne" data-parent="#accordion1">
+        <div class="card-body">
+            <div class="opacity-75">
+
+                <div><b><span style="font-family: &quot;Times New Roman&quot;;">Eligibility: (Morning &amp; Evening Degree Program)</span></b></div><ul><li><span style="font-family: &quot;Times New Roman&quot;;">Minimum 50 percent Marks in Intermediate with ono of the following combinations:</span><br></li><li><span style="font-family: &quot;Times New Roman&quot;;">F.Sc. Pre-Engineering / Pre-Medical&nbsp; &nbsp; </span><b><span style="font-family: &quot;Times New Roman&quot;;">OR</span></b></li><li><span style="font-family: &quot;Times New Roman&quot;;">General Science Group with any of the following combinations;</span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Mathematic, Statistics, Physics</span><span style="font-family: &quot;Times New Roman&quot;;">﻿</span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Mathematic, Computer Science, Physics</span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Mathematic, Computer Science, Statistics</span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Mathematic, Computer Science, Economics</span></li><li><span style="font-family: &quot;Times New Roman&quot;;">Mathematic, Statistics, Economics&nbsp; &nbsp; </span><b><span style="font-family: &quot;Times New Roman&quot;;">&nbsp; OR</span></b></li><li><span style="font-family: &quot;Times New Roman&quot;;">A level/Equivalent certificate with minimum 50% Scores/Grades having same subjects mentioned above in category a &amp; b. NOTE, Equivalence Certificate from IBCC is compulsory for A-Level/Equivalent Certificate holder</span></li><li><span style="font-family: &quot;Times New Roman&quot;;"><span style="font-family: &quot;Times New Roman&quot;;">Candidates with Pre-Medical (who have not qualified Additional Mathematics) must pass deficiency courses of Mathematics of 6 Credit Hours within One Year.</span><br><br></span></li></ul><table class="table table-bordered"><tbody><tr><td><p><b style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: rgb(0, 0, 0);"><span style="font-size: 10pt; line-height: 15.3333px; font-family: &quot;Times New Roman&quot;;">Programmes</span></b><span style="font-family: &quot;Times New Roman&quot;;">﻿</span><br></p></td><td><span style="font-family: &quot;Times New Roman&quot;;">Intermediate In</span></td><td><span style="font-family: &quot;Times New Roman&quot;;">O-Level &amp; A-Level</span></td></tr><tr><td><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: 13.3333px; font-weight: 700;">BS Computer Science</span><br></td><td><table class="my-rteTable-default" width="100%" cellspacing="0" style="border: 1px solid rgb(196, 196, 196); padding: 2px; vertical-align: top; font-family: Arial, Helvetica, sans-serif; font-size: 1em;"><tbody><tr class="my-rteTableEvenRow-default"><td class="my-rteTableOddCol-default" style="border-color: rgb(196, 196, 196); padding: 2px;"><span style="font-size: 10pt; line-height: 15.3333px; font-family: calibri, sans-serif; color: black;"><span style="font-family: &quot;Times New Roman&quot;;">FSc Pre-Engineering / Computer Science Group</span><br><br></span></td></tr></tbody></table></td><td><span style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;; font-size: 13.3333px;">O level (SSC) equivalence of “Science group” and A level (HSSC) equivalence of “Pre-Engineering group” OR “Computer Science group” including Maths, Physics, Chemistry/Computer Science/Computer Studies as mandatory subjects.</span><br></td></tr></tbody></table><ul><li><span style="font-family: &quot;Times New Roman&quot;;"><br></span></li></ul>
+
+            </div>
+        </div>
+    </div>
+</div>-->
+<!-- Card -->
+<!--<div class="card">
+    <div class="card-header">
+        <h6>
+            <a href="#collapseTwo" data-toggle="collapse">
+                <i class="fe-icon-clock"></i>#2 MSCS Admission Criteria
+            </a>
+        </h6>
+    </div>
+    <div class="collapse show" id="collapseTwo" data-parent="#accordion1">
+        <div class="card-body">
+            <div class="opacity-75">Anim pariatur cliche rephenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus dolores eos qui ratione voluptatem.</div>
+        </div>
+    </div>
+</div>-->
+<!-- Card -->
+<!--<div class="card">
+        <div class="card-header">
+            <h6>
+                <a class="collapsed" href="#collapseThree" data-toggle="collapse">
+                    <i class="fe-icon-mic"></i>#3 PHD Admission Criteria
+                </a>
+            </h6>
+        </div>
+        <div class="collapse" id="collapseThree" data-parent="#accordion1">
+            <div class="card-body">
+                <div class="opacity-75">Anim pariatur cliche rephenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus dolores eos qui ratione voluptatem.</div>
+            </div>
+        </div>
+    </div>
+</div>-->
