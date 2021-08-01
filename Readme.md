@@ -20,5 +20,9 @@ Only after this students will be able to access their interfaces. This is done t
 
 To run this application, you just need a stable version of visual studio, perferably 2015 or above and a browser e.g. Google Chrome. Just open the sln file in android studio and click run or press Ctrl + F5.
 
+
+
 ![22](https://user-images.githubusercontent.com/64142854/127769625-2e4e74ba-e724-4c58-9873-8a33b9d61435.PNG)
+
+
 ![333](https://user-images.githubusercontent.com/64142854/127769647-157dcf17-cf0e-4092-99a8-08e7813215cc.PNG)
